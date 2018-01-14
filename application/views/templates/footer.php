@@ -11,7 +11,7 @@
     		
     	</div><!-- /.col-md-6 -->
     	<div class="col-md-6">
-				<p class="text-muted float-right">© Bskapital. All Rights Reserved test.</p>
+				<p class="text-muted float-right">© Bskapital. All Rights Reserved.</p>
     	</div><!-- /.col-md-6 -->
     </div><!-- /.row -->
   </div>

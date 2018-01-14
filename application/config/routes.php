@@ -61,6 +61,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // $route['categories']='categories/index';
 // $route['(:any)']='page/view/$1';
 
+$route['admin/career']='career/admin';
+$route['admin/career/create']='career/create';
+$route['admin/career/edit/(:any)']='career/edit/$1';
+$route['admin/career/delete/(:any)']='career/delete/$1';
+
+$route['admin/news']='news/admin';
+$route['admin/news/create']='news/create';
+$route['admin/news/edit/(:any)']='news/edit/$1';
+$route['admin/news/delete/(:any)']='news/delete/$1';
+
+$route['admin/regulation']='regulation/admin';
+$route['admin/regulation/create']='regulation/create';
+$route['admin/regulation/edit/(:any)']='regulation/edit/$1';
+$route['admin/regulation/delete/(:any)']='regulation/delete/$1';
+
+$route['admin/user']='user/admin';
+$route['admin/user/create']='user/create';
+$route['admin/user/edit/(:any)']='user/edit/$1';
+$route['admin/user/delete/(:any)']='user/delete/$1';
+
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

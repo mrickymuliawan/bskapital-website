@@ -16,10 +16,17 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 control-label">Name</label>
+        <label class="col-sm-2 control-label">First Name</label>
 
         <div class="col-sm-10">
-          <input type="text" name="name" class="form-control" value="<?= $user['name'] ?>">
+          <input type="text" name="first_name" class="form-control" value="<?= $user['first_name']; ?>">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Last Name</label>
+
+        <div class="col-sm-10">
+          <input type="text" name="last_name" class="form-control" value="<?= $user['last_name']; ?>">
         </div>
       </div>
       <div class="form-group">

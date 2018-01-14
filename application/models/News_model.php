@@ -44,15 +44,7 @@ class News_model extends CI_Model
 
 	public function delete_news($news_id)
 	{	
-		$query=$this->db->get_where('news',array('news_id'=>$news_id))->row_array();
 		
-		$path=FCPATH."assets/images/news/";
-		$image_name=$query['image_name'];
-		$image_path=$path.$image_name;
-		// delete file if exist or if image name isnt noimage.jpg
-		if (file_exists($image_path) || $image_name!='noimage.jpg') { 
-			unlink($image_path);
-		}
 		$this->db->where('news_id',$news_id);
 		$this->db->delete('news');
 		return true;

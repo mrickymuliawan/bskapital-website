@@ -25,6 +25,7 @@
         <li><a href="<?= base_url("admin/news") ?>"> <i class="fa fa-newspaper-o"></i> <span>News</span> </a></li>
         <li><a href="<?= base_url("admin/regulation") ?>"> <i class="fa fa-balance-scale"></i> <span>Regulation</span></a></li>
         <li><a href="<?= base_url("admin/user") ?>"> <i class="fa fa-user"></i> <span>User</span></a></li>
+        <li><a href="<?= base_url("admin/career") ?>"> <i class="fa fa-user"></i> <span>Career</span></a></li>
         <li class="treeview">
           <a href="#"> <i class="fa fa-file"></i> <span>Page</span>
             <span class="pull-right-container">

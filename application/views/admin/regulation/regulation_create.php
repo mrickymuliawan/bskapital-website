@@ -10,14 +10,14 @@
         <label class=" control-label">Title</label>
 
         <div class="">
-          <input type="text" class="form-control" placeholder="title" name="title">
+          <input type="text" class="form-control" placeholder="title" name="title" value="<?= set_value('title'); ?>">
         </div>
       </div>
       <div class="form-group">
         <label class=" control-label">Content</label>
 
         <div class="">
-          <textarea name="content" rows="20" class="form-control texteditor"></textarea>
+          <textarea name="content" rows="20" class="form-control texteditor"><?= set_value('content'); ?></textarea>
         </div>
       </div>
     </div>

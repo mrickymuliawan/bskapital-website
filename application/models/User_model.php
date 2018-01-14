@@ -19,7 +19,8 @@ class User_model extends CI_Model
 	{
 		$data=array(
 			'email'=>$this->input->post('email'),
-			'name'=>$this->input->post('name'),
+			'first_name'=>$this->input->post('first_name'),
+			'last_name'=>$this->input->post('last_name'),
 			'role'=>$this->input->post('role'),
 			'password'=>$enc_password
 			);
@@ -39,7 +40,8 @@ class User_model extends CI_Model
 		$user_id=$this->input->post('user_id');
 		$data=array(
 			'email'=>$this->input->post('email'),
-			'name'=>$this->input->post('name'),
+			'first_name'=>$this->input->post('first_name'),
+			'last_name'=>$this->input->post('last_name'),
 			'role'=>$this->input->post('role')
 			);
 		$this->db->where('user_id',$user_id);

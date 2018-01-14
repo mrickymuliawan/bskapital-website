@@ -24,7 +24,7 @@
             <tr>
               <td><?= $key+1 ?></td>
               <td><?= $value['email'] ?></td>
-              <td><?= $value['name'] ?></td>
+              <td><?= "$value[first_name] $value[last_name]" ?></td>
               <td><?= $value['role'] ?></td>
               <td><?= $value['created_at'] ?></td>
               <td>  

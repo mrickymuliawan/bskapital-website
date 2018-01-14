@@ -23,7 +23,7 @@
             <tr>
               <td><?= $key+1 ?></td>
               <td><?= $value['title'] ?></td>
-              <td><?= $value['name'] ?></td>
+              <td><?= $value['first_name'] ?></td>
               <td><?= $value['created_at'] ?></td>
               <td>  
                 <a href="<?= base_url("admin/news/edit/$value[news_id]")?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
