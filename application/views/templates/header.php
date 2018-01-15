@@ -39,7 +39,7 @@
     </div>
   </nav>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-primary pl-5">
+	<nav class="navbar navbar-expand-lg navbar-light bg-primary pl-5 mb-1">
    
       <a class="navbar-brand text-white" href="#"><strong>BSKAPITAL</strong></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,16 +55,16 @@
             <a class="nav-link text-white" href="<?= base_url('services') ?>">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="<?= base_url('regulations') ?>">Regulations</a>
+            <a class="nav-link text-white" href="<?= base_url('about') ?>">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="<?= base_url('regulation') ?>">Regulations</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="<?= base_url('news') ?>">News</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="<?= base_url('career') ?>">Career</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="<?= base_url('about') ?>">About Us</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="<?= base_url('contact') ?>">Contact Us</a>

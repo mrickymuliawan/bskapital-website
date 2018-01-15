@@ -3,7 +3,20 @@
 class Regulation_model extends CI_Model
 {
 	
+	public function get_home_regulation($slug = FALSE,$limit = FALSE,$offset= FALSE){ //for home
+		if ($limit) {
+			$this->db->limit($limit,$offset);
+		}
+		if ($slug === false) {
+			$this->db->order_by('regulation_id','DESC');
+			$this->db->join('user','user.user_id = regulation.user_id');
+			$query = $this->db->get('regulation');
+			return $query->result_array();
+		}
 
+		$query=$this->db->get_where('regulation',array('slug' => $slug));
+		return $query->row_array();
+	}
 	// CRUD FUNCTION
 	public function create_regulation($image_name)
 	{
@@ -17,7 +30,7 @@ class Regulation_model extends CI_Model
 		return $this->db->insert('regulation',$data);
 		
 	}
-	public function get_regulation($regulation_id=FALSE){
+	public function get_admin_regulation($regulation_id=FALSE){
 		if ($regulation_id==FALSE) {
 			$query=$this->db->get('regulation');
 			return $query->result_array();

@@ -15,66 +15,31 @@
 			<div class="col-md-8">
 				<h2>Regulations</h2>
 				<hr />
-				<div class="row mb-2">
-					<div class="col-md-6">
-						<div class="card p-2">
-						  <h4 class="card-title">Regulations Title</h4>
-						  <img class="card-img-top w-100" src="<?=base_url("assets/images/home/carousel3.jpg") ?>" alt="Card image cap">
-						  <div class="card-block p-2">
-						    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						    
-						    <small>7 Oct 2017 by Admin</small><a href="#" class="float-right">Read More</a>
-						  </div>
-						</div>
-					</div><!-- /.col-md-6 -->
-					<div class="col-md-6">
-						<div class="card p-2">
-						  <h4 class="card-title">Regulations Title</h4>
-						  <img class="card-img-top w-100" src="<?=base_url("assets/images/home/carousel3.jpg") ?>" alt="Card image cap">
-						  <div class="card-block p-2">
-						    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						    
-						    <small>7 Oct 2017 by Admin</small><a href="#" class="float-right">Read More</a>
-						  </div>
-						</div>
-					</div><!-- /.col-md-6 -->
-				</div><!-- /.row -->
 				
-				<div class="row mb-2">
-					<div class="col-md-6">
+				<div class="row">
+				<?php foreach ($regulation as $key => $value): ?>
+					<div class="col-md-6 mb-2">
 						<div class="card p-2">
-						  <h4 class="card-title">Regulations Title</h4>
-						  <img class="card-img-top w-100" src="<?=base_url("assets/images/home/carousel3.jpg") ?>" alt="Card image cap">
+						  <h4 class="card-title"><?= $value['title'] ?></h4>
+						  <img class="card-img-top w-100" src="<?=base_url("assets/images/regulation/default-regulation.jpg") ?>" alt="Card image cap">
 						  <div class="card-block p-2">
-						    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						    <p class="card-text text-muted">
+										<?= word_limiter($value['content'],50) ?>
+						    </p>
 						    
-						    <small>7 Oct 2017 by Admin</small><a href="#" class="float-right">Read More</a>
+						    <small><?= date('d m Y',strtotime($value['created_at']))." by <b>$value[first_name]</b>" ?></small><a href="#" class="float-right">Read More</a>
 						  </div>
 						</div>
 					</div><!-- /.col-md-6 -->
-					<div class="col-md-6">
-						<div class="card p-2">
-						  <h4 class="card-title">Regulations Title</h4>
-						  <img class="card-img-top w-100" src="<?=base_url("assets/images/home/carousel3.jpg") ?>" alt="Card image cap">
-						  <div class="card-block p-2">
-						    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						    
-						    <small>7 Oct 2017 by Admin</small><a href="#" class="float-right">Read More</a>
-						  </div>
-						</div>
-					</div><!-- /.col-md-6 -->
+				<?php endforeach ?>
 				</div><!-- /.row -->
+
+
 				<nav aria-label="Page navigation example">
-				  <ul class="pagination">
-				    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-				    <li class="page-item"><a class="page-link" href="#">1</a></li>
-				    <li class="page-item"><a class="page-link" href="#">2</a></li>
-				    <li class="page-item"><a class="page-link" href="#">3</a></li>
-				    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-				  </ul>
+				  <?php echo $this->pagination->create_links(); ?>
 				</nav>
 			</div><!-- /.col-md-8 -->
-
+		
 			<div class="col-md-4">
 				<h2>Latest Regulations</h2>
 				<hr />
