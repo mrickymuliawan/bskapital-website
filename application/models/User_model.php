@@ -67,7 +67,16 @@ class User_model extends CI_Model
 		return $this->db->update('user',$data);
 		
 	}
-
+	public function changepassword($user_id)
+	{
+		$newpassword=md5($this->input->post('newpassword'));
+		$data=array(
+			'password'=>$newpassword
+			);
+		$this->db->where('user_id',$user_id);
+		return $this->db->update('user',$data);
+		
+	}
 	// HELPER FUNCTION
 	public function check_email_exists($email){
 		$query=$this->db->get_where('user',array('email'=>$email));
@@ -78,6 +87,15 @@ class User_model extends CI_Model
 			return false; //data sudah ada
 		}
 	}
-
+	public function check_password($user_id){
+		$oldpassword=md5($this->input->post('oldpassword'));
+		$query=$this->db->get_where('user',array('user_id'=>$user_id))->row_array();
+		if ($query['password'] == $oldpassword) {
+			return true; //password benar
+		}
+		else{
+			return false; //password salah
+		}
+	}
 
 }

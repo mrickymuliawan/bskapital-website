@@ -73,6 +73,29 @@ class User extends CI_Controller
 		$this->session->set_flashdata('info','Data successfuly deleted');
 		redirect('admin/user/');	
 	}
+	public function changepassword($user_id){
+		$data['title']="Change Password";
+		$this->form_validation->set_rules('email','email','required');
+		$this->form_validation->set_rules('user_id','user_id','required|callback_check_password');
+		$this->form_validation->set_rules('oldpassword','oldpassword','required');
+		$this->form_validation->set_rules('newpassword','newpassword','required');
+
+		if ($this->form_validation->run() === false) {
+			$data['user']=$this->User_model->get_user($user_id);
+			if (empty($data['user'])) {
+				show_404_();
+			}
+			$this->load->view("admin/templates/header");
+			$this->load->view("admin/templates/sidebar",$data);
+			$this->load->view("admin/user/user_change_password",$data);
+			$this->load->view("admin/templates/footer");	
+		}
+		else{
+			$this->User_model->changepassword($user_id);
+			$this->session->set_flashdata('info','Data successfuly updated');
+			redirect('admin/user/');
+		}	
+	}
 	public function resetpassword($user_id){
 		$this->User_model->resetpassword_user($user_id);
 		$this->session->set_flashdata('info','Data successfuly updated');
@@ -88,6 +111,16 @@ class User extends CI_Controller
 		}
 		else{
 			return false; // data sudah ada
+		}
+	}
+
+	public function check_password($user_id){
+		$this->form_validation->set_message('check_password','invalid password');
+		if ($this->User_model->check_password($user_id)) {
+			return true; // password benar
+		}
+		else{
+			return false; // password salah
 		}
 	}
 }

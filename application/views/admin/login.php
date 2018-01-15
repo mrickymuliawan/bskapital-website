@@ -34,7 +34,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
-    <?= validation_errors() ?>
     <?= form_open('admin/login') ?>
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="Email" name="email">
@@ -52,7 +51,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- /.col -->
       </div>
       <?php if ($this->session->flashdata('info')): ?>
-        <h4 class="text-red text-center"><?php echo $this->session->flashdata('info') ?></h4>
+        <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-check"></i> Info!</h4>
+        <?= $this->session->flashdata('info') ?>
+        </div>
+      <?php elseif(validation_errors()): ?>
+        <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-warning"></i> Error!</h4>
+        <?= validation_errors() ?>
+        </div>
+      <?php elseif($this->session->flashdata('error')):?>
+        <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-warning"></i> Error!</h4>
+        <?= $this->session->flashdata('error') ?>
+        </div>
       <?php endif ?>
     </form>
 

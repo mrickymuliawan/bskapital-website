@@ -40,7 +40,7 @@ class Admin extends CI_Controller
 				redirect('admin/user');
 			}
 			else{
-				$this->session->set_flashdata('info','login failed');
+				$this->session->set_flashdata('error','invalid email or password');
 				redirect('admin/login');
 			}
 			
