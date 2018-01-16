@@ -66,6 +66,11 @@ $route['admin/career/create']='career/create';
 $route['admin/career/edit/(:any)']='career/edit/$1';
 $route['admin/career/delete/(:any)']='career/delete/$1';
 
+// news pagination and breadcrumb
+$route['news/index']='news/index/$1';
+// news item view
+$route['news/(:any)']='news/view/$1'; 
+// news admin crud
 $route['admin/news']='news/admin';
 $route['admin/news/create']='news/create';
 $route['admin/news/edit/(:any)']='news/edit/$1';

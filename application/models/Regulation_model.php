@@ -26,7 +26,7 @@ class Regulation_model extends CI_Model
 			'title'=>$this->input->post('title'),
 			'content'=>$this->input->post('content'),
 			'user_id'=>$this->session->userdata('user_id'),
-			'slug'=>$slug
+			'slug'=>strtolower($slug)
 			);
 		return $this->db->insert('regulation',$data);
 		
@@ -46,7 +46,7 @@ class Regulation_model extends CI_Model
 		$data=array(
 			'title'=>$this->input->post('title'),
 			'content'=>$this->input->post('content'),
-			'slug'=>$slug
+			'slug'=>strtolower($slug)
 			);
 		$this->db->where('regulation_id',$regulation_id);
 		return $this->db->update('regulation',$data);

@@ -14,6 +14,9 @@ function breadcrumb()
 	if ($length>2) {
 		$length-=2;
 	}
+	elseif ($ci->uri->segment(2) =='index') {
+		$length-=1;
+	}
 	$breadcrumb="<li class='breadcrumb-item'><a href=".base_url().">Home</a></li>";
 	for ($i=1; $i <=$length ; $i++) { 
 		if ($i<$length) {

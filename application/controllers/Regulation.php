@@ -7,7 +7,7 @@ class Regulation extends CI_Controller
 	}
 	public function index($offset = 0)
 	{
-			// pagination
+		// pagination
 		$config['base_url'] = base_url('regulation/index');
 		$config['total_rows'] = $this->db->count_all('regulation');
 		$config['per_page'] = 4;

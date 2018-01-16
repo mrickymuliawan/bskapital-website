@@ -12,7 +12,7 @@ class Career_model extends CI_Model
 			'title'=>$this->input->post('title'),
 			'content'=>$this->input->post('content'),
 			'user_id'=>$this->session->userdata('user_id'),
-			'slug'=>$slug
+			'slug'=>strtolower($slug)
 			);
 		return $this->db->insert('career',$data);
 		
@@ -32,7 +32,7 @@ class Career_model extends CI_Model
 		$data=array(
 			'title'=>$this->input->post('title'),
 			'content'=>$this->input->post('content'),
-			'slug'=>$slug
+			'slug'=>strtolower($slug)
 			);
 		$this->db->where('career_id',$career_id);
 		return $this->db->update('career',$data);

@@ -3,7 +3,21 @@
 class News_model extends CI_Model
 {
 	
+	public function get_home_news($slug = FALSE,$limit = FALSE,$offset= FALSE){ //for home
+		if ($limit) {
+			$this->db->limit($limit,$offset);
+		}
+		if ($slug === false) {
+			$this->db->order_by('news_id','DESC');
+			$this->db->join('user','user.user_id = news.user_id');
+			$query = $this->db->get('news');
+			return $query->result_array();
+		}
 
+		$this->db->join('user','user.user_id = news.user_id');
+		$query=$this->db->get_where('news',array('slug' => $slug));
+		return $query->row_array();
+	}
 	// CRUD FUNCTION
 	public function create_news($image_name)
 	{
@@ -12,13 +26,13 @@ class News_model extends CI_Model
 			'title'=>$this->input->post('title'),
 			'content'=>$this->input->post('content'),
 			'user_id'=>$this->session->userdata('user_id'),
-			'slug'=>$slug,
+			'slug'=>strtolower($slug),
 			'image_name'=>$image_name
 			);
 		return $this->db->insert('news',$data);
 		
 	}
-	public function get_news($news_id=FALSE){
+	public function get_admin_news($news_id=FALSE){
 		if ($news_id==FALSE) {
 			$this->db->order_by('news_id','DESC');
 			$this->db->join('user','user.user_id = news.user_id');
@@ -35,7 +49,7 @@ class News_model extends CI_Model
 		$data=array(
 			'title'=>$this->input->post('title'),
 			'content'=>$this->input->post('content'),
-			'slug'=>$slug
+			'slug'=>strtolower($slug)
 			);
 		$this->db->where('news_id',$news_id);
 		return $this->db->update('news',$data);

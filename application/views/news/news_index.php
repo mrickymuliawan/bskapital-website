@@ -1,92 +1,60 @@
-<section class="bg-light py-1">
+<section>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<nav aria-label="breadcrumb">
 				  <ol class="breadcrumb">
-				    <li class="breadcrumb-item"><a href="#">Home</a></li>
-				    <li class="breadcrumb-item"><a href="#">News</a></li>
-				    <li class="breadcrumb-item active" aria-current="page">Data</li>
+				    <?= $breadcrumb ?>
 				  </ol>
 				</nav>
 			</div><!-- /.colmd-12 -->
 		</div><!-- /.row -->
 		<div class="row">
 			<div class="col-md-8">
-				<h2>News</h2>
+				<h3><?= $title ?></h3>
 				<hr />
+				<?php foreach ($news as $key => $value): ?>
 				<div class="row mb-2">
-					<div class="col-md-6">
-						<div class="card p-2">
-						  <h4 class="card-title">News Title</h4>
-						  <img class="card-img-top w-100" src="<?=base_url("assets/images/home/carousel3.jpg") ?>" alt="Card image cap">
-						  <div class="card-block p-2">
-						    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						    
-						    <small>7 Oct 2017 by Admin</small><a href="#" class="float-right">Read More</a>
-						  </div>
-						</div>
-					</div><!-- /.col-md-6 -->
-					<div class="col-md-6">
-						<div class="card p-2">
-						  <h4 class="card-title">News Title</h4>
-						  <img class="card-img-top w-100" src="<?=base_url("assets/images/home/carousel3.jpg") ?>" alt="Card image cap">
-						  <div class="card-block p-2">
-						    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						    
-						    <small>7 Oct 2017 by Admin</small><a href="#" class="float-right">Read More</a>
-						  </div>
-						</div>
-					</div><!-- /.col-md-6 -->
-				</div><!-- /.row -->
 				
-				<div class="row mb-2">
-					<div class="col-md-6">
+					<div class="col-md-4">
+						<img class="img-fluid" src="<?=base_url("assets/images/news/$value[image_name]") ?>" alt="Card image cap">
+					</div><!-- /.col-md-4 -->
+					<div class="col-md-8">
 						<div class="card p-2">
-						  <h4 class="card-title">News Title</h4>
-						  <img class="card-img-top w-100" src="<?=base_url("assets/images/home/carousel3.jpg") ?>" alt="Card image cap">
+						  <h4 class="card-title"><?= ucwords($value['title']) ?></h4>
+						  
 						  <div class="card-block p-2">
-						    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						    <p class="card-text text-muted">
+										<?= word_limiter($value['content'],50) ?>
+						    </p>
 						    
-						    <small>7 Oct 2017 by Admin</small><a href="#" class="float-right">Read More</a>
-						  </div>
-						</div>
-					</div><!-- /.col-md-6 -->
-					<div class="col-md-6">
-						<div class="card p-2">
-						  <h4 class="card-title">News Title</h4>
-						  <img class="card-img-top w-100" src="<?=base_url("assets/images/home/carousel3.jpg") ?>" alt="Card image cap">
-						  <div class="card-block p-2">
-						    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						    
-						    <small>7 Oct 2017 by Admin</small><a href="#" class="float-right">Read More</a>
+						    <small><?= date('d F Y',strtotime($value['created_at']))." by <b>$value[first_name]</b>" ?></small><a href="<?= base_url("news/$value[slug]") ?>" class="float-right">Read More</a>
 						  </div>
 						</div>
 					</div><!-- /.col-md-6 -->
 				</div><!-- /.row -->
+				<?php endforeach ?>
+
+
 				<nav aria-label="Page navigation example">
-				  <ul class="pagination">
-				    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-				    <li class="page-item"><a class="page-link" href="#">1</a></li>
-				    <li class="page-item"><a class="page-link" href="#">2</a></li>
-				    <li class="page-item"><a class="page-link" href="#">3</a></li>
-				    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-				  </ul>
+				  <?php echo $this->pagination->create_links(); ?>
 				</nav>
 			</div><!-- /.col-md-8 -->
 
 			<div class="col-md-4">
-				<h2>Latest Regulations</h2>
+				<h3>Latest Regulation</h3>
 				<hr />
 				<ul class="list-group">
-				  <li class="list-group-item bg-info"><a class="text-white" href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item bg-info"><a class="text-white" href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item bg-info"><a class="text-white" href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item bg-info"><a class="text-white" href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item bg-info"><a class="text-white" href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
+					<?php foreach ($regulation as $key => $value): ?>
+						<li class="list-group-item bg-info">
+							<a class="text-white" href="<?= base_url("regulation/$value[slug]") ?>">
+							<?= $value['title'] ?></a>
+						</li>
+					<?php endforeach ?>
+				  
 				</ul>
 				<br />
-				<button class="btn btn-info float-right">Show All Regulations</button>
+				<a href="<?= base_url('regulation') ?>" class="btn btn-info float-right">Show All Regulations</a>
 			</div><!-- /.col-md-4 -->
 		</div><!-- /.row -->
 	</div><!-- /.container -->
