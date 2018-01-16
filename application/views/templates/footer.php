@@ -1,4 +1,4 @@
-<section class="p-5">
+<section class="p-5 bg-light">
   <div class="container">
     <div class="row">
     	<div class="col-md-6">

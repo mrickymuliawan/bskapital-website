@@ -14,6 +14,7 @@ class Regulation_model extends CI_Model
 			return $query->result_array();
 		}
 
+		$this->db->join('user','user.user_id = regulation.user_id');
 		$query=$this->db->get_where('regulation',array('slug' => $slug));
 		return $query->row_array();
 	}

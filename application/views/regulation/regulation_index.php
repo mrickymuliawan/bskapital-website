@@ -1,4 +1,4 @@
-<section class="bg-light">
+<section>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -27,7 +27,7 @@
 										<?= word_limiter($value['content'],50) ?>
 						    </p>
 						    
-						    <small><?= date('d m Y',strtotime($value['created_at']))." by <b>$value[first_name]</b>" ?></small><a href="#" class="float-right">Read More</a>
+						    <small><?= date('d m Y',strtotime($value['created_at']))." by <b>$value[first_name]</b>" ?></small><a href="<?= base_url("regulation/view/$value[slug]") ?>" class="float-right">Read More</a>
 						  </div>
 						</div>
 					</div><!-- /.col-md-6 -->

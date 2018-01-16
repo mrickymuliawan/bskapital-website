@@ -40,7 +40,18 @@ class Regulation extends CI_Controller
 		$this->load->view("regulation/regulation_index",$data);
 		$this->load->view("templates/footer");
 	}
+	public function view($slug){
+		$data['regulation'] = $this->Regulation_model->get_home_regulation($slug);
+		if (empty($data['regulation'])) {
+			show_404();
+		}
+		$data['title'] = $data['regulation']['title'];
+		$this->load->view("templates/header");
+		$this->load->view("regulation/regulation_view",$data);
+		$this->load->view("templates/footer");	
+	}
 
+	// ADMIN
 	public function admin(){
 		check_logged_in();
 		$data['title']="regulation";
