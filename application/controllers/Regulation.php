@@ -35,6 +35,7 @@ class Regulation extends CI_Controller
 		$this->pagination->initialize($config);
 
 		$data['title']="Regulations";
+		$data['breadcrumb']=breadcrumb();
 		$data['regulation']=$this->Regulation_model->get_home_regulation(FALSE,$config['per_page'],$offset);
 		$this->load->view("templates/header");
 		$this->load->view("regulation/regulation_index",$data);
@@ -46,6 +47,7 @@ class Regulation extends CI_Controller
 			show_404();
 		}
 		$data['title'] = $data['regulation']['title'];
+		$data['breadcrumb']=breadcrumb();
 		$this->load->view("templates/header");
 		$this->load->view("regulation/regulation_view",$data);
 		$this->load->view("templates/footer");	

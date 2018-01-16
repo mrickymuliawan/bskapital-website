@@ -4,9 +4,7 @@
 			<div class="col-md-12">
 				<nav aria-label="breadcrumb">
 				  <ol class="breadcrumb">
-				    <li class="breadcrumb-item"><a href="#">Home</a></li>
-				    <li class="breadcrumb-item"><a href="#">News</a></li>
-				    <li class="breadcrumb-item active" aria-current="page">Data</li>
+				    <?= $breadcrumb ?>
 				  </ol>
 				</nav>
 			</div><!-- /.colmd-8 -->
@@ -27,7 +25,7 @@
 										<?= word_limiter($value['content'],50) ?>
 						    </p>
 						    
-						    <small><?= date('d m Y',strtotime($value['created_at']))." by <b>$value[first_name]</b>" ?></small><a href="<?= base_url("regulation/view/$value[slug]") ?>" class="float-right">Read More</a>
+						    <small><?= date('d m Y',strtotime($value['created_at']))." by <b>$value[first_name]</b>" ?></small><a href="<?= base_url("regulation/$value[slug]") ?>" class="float-right">Read More</a>
 						  </div>
 						</div>
 					</div><!-- /.col-md-6 -->

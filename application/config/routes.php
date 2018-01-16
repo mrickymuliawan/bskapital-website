@@ -71,6 +71,12 @@ $route['admin/news/create']='news/create';
 $route['admin/news/edit/(:any)']='news/edit/$1';
 $route['admin/news/delete/(:any)']='news/delete/$1';
 
+
+// regulation pagination and breadcrumb
+$route['regulation/index']='regulation/index/$1';
+// regulation item view
+$route['regulation/(:any)']='regulation/view/$1'; 
+// regulation admin crud
 $route['admin/regulation']='regulation/admin';
 $route['admin/regulation/create']='regulation/create';
 $route['admin/regulation/edit/(:any)']='regulation/edit/$1';
