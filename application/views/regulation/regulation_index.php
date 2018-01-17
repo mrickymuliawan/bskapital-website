@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<nav aria-label="breadcrumb">
-				  <ol class="breadcrumb">
+				  <ol class="breadcrumb bg-light">
 				    <?= $breadcrumb ?>
 				  </ol>
 				</nav>
@@ -14,41 +14,54 @@
 				<h3><?= $title ?></h3>
 				<hr />
 				
-				<ul class="list-group">
+				
 				<?php foreach ($regulation as $key => $value): ?>
-					<a class="text-white mb-2" href="<?= base_url("regulation/$value[slug]") ?>">
-						<li class="list-group-item bg-info">
-								<?= $value['title'] ?>
-								<br />
-						</li>
-						<li class="list-group-item">
-							
-						<span class="text-dark"><?= date("d F Y",strtotime($value['created_at'])) ?></span>
-						<span class="float-right btn btn-info">Read More</span>
-						</li>
-					</a>
+					<div class="row mb-5 border py-1">
+						<div class="col-md-5">
+							<img class="img-fluid" src="<?=base_url("assets/images/regulation/default-regulation.jpg") ?>" alt="Card image cap">
+						</div><!-- /.col-md-5 -->
+						<div class="col-md-7">					  
+					   <a href="<?= base_url("regulation/$value[slug]") ?>">
+						  	<h5 class="text-dark"><?= ucwords($value['title']) ?></h5>
+						  </a>
+					    <p class="text-muted">
+									<?= strip_tags(word_limiter($value['content'],30)) ?>
+					    </p>
+					    <br />
+					    <span><?= date('d F Y',strtotime($value['created_at']))." by <b>$value[first_name]</b>" ?></span>
+		 					<a href="<?= base_url("regulation/$value[slug]") ?>" class=" btn btn-primary float-right">Read More</a>	
+							 
+						</div><!-- /.col-md-7 -->
+
+					</div><!-- /.row -->
 				<?php endforeach ?>
-				</ul><!-- /.row -->
 				<br />
 	
 				<nav aria-label="Page navigation example">
 				  <?php echo $this->pagination->create_links(); ?>
 				</nav>
 			</div><!-- /.col-md-8 -->
-		
+
 			<div class="col-md-4">
-				<h3>Latest Regulations</h3>
+				<h3>Latest News</h3>
 				<hr />
-				<ul class="list-group">
-				  <li class="list-group-item bg-info"><a class="text-white" href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item bg-info"><a class="text-white" href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item bg-info"><a class="text-white" href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item bg-info"><a class="text-white" href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item bg-info"><a class="text-white" href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				</ul>
-				<br />
-				<button class="btn btn-info float-right">Show All Regulations</button>
+					<?php foreach ($news as $key => $value): ?>
+						<div class="card">
+						  <img class="card-img-top" src="<?= base_url("assets/images/news/$value[image_name]") ?>" >
+						  <div class="card-body pb-0">
+						    <h5 class="card-title"><?= ucwords($value['title']) ?></h5>
+						    <p class="card-text"><?= strip_tags(word_limiter($value['content'],30)) ?></p>
+						  </div>
+						  <div class="card-footer bg-white">
+						  	<small><?= date('d F Y',strtotime($value['created_at']))." by <b>$value[first_name]</b>" ?></small>
+						  	<a href="<?= base_url("news/$value[slug]") ?>" class="float-right btn btn-info">Read More</a>
+						  </div>
+						</div>
+						<br />
+					<?php endforeach ?>
+				<a href="<?= base_url('news') ?>" class="btn btn-info float-right">Show All News</a>
 			</div><!-- /.col-md-4 -->
+
 		</div><!-- /.row -->
 	</div><!-- /.container -->
 </section>

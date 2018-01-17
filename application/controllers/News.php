@@ -10,7 +10,7 @@ class News extends CI_Controller
 		// pagination
 		$config['base_url'] = base_url('news/index');
 		$config['total_rows'] = $this->db->count_all('news');
-		$config['per_page'] = 4;
+		$config['per_page'] = 5;
 		$config['uri_segment'] = 3;
 		$config['attributes'] = array('class' => 'page-link');
 
@@ -44,6 +44,7 @@ class News extends CI_Controller
 	}
 	public function view($slug){
 		$data['news'] = $this->News_model->get_home_news($slug);
+		$data['regulation']=$this->Regulation_model->get_home_regulation(FALSE,3,FALSE);
 		if (empty($data['news'])) {
 			show_404();
 		}
@@ -57,7 +58,7 @@ class News extends CI_Controller
 	// ADMIN
 	public function admin(){
 		check_logged_in();
-		$data['title']="Newss";
+		$data['title']="News";
 		$data['news']=$this->News_model->get_admin_news(); 
 		$this->load->view("admin/templates/header");
 		$this->load->view("admin/templates/sidebar",$data);
@@ -141,7 +142,7 @@ class News extends CI_Controller
 	}
 	public function delete($news_id){
 		check_logged_in();
-		$query=$this->News_model->get_news($news_id);
+		$query=$this->News_model->get_admin_news($news_id);
 		
 		$path=FCPATH."assets/images/news/";
 		$image_name=$query['image_name'];

@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<nav aria-label="breadcrumb">
-				  <ol class="breadcrumb">
+				  <ol class="breadcrumb bg-light">
 				    <?= $breadcrumb ?>
 				  </ol>
 				</nav>
@@ -13,7 +13,7 @@
 			<div class="col-md-8">
 				<div class="post-head">
 					<h3><?= ucwords($news['title']) ?></h3>
-					<small><?= date('d F Y',strtotime($news['created_at'])) ?> by <strong><?= $news['first_name'] ?></strong></small> 
+					<span><?= date('d F Y',strtotime($news['created_at'])) ?> by <strong><?= $news['first_name'] ?></strong></span> 
 					<hr />
 				</div><!-- /.post-head -->
 				<div class="post-body p-2">
@@ -31,9 +31,13 @@
 				<br />
 				<hr />
 				<ul class="list-group">
-				  <li class="list-group-item bg-info"><a class="text-white" href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item bg-info"><a class="text-white" href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item bg-info"><a class="text-white" href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
+					<?php foreach ($regulation as $key => $value): ?>
+						<li class="list-group-item bg-info ">
+							<a class="text-white" href="<?= base_url("regulation/$value[slug]") ?>">
+							<?= $value['title'] ?></a>
+						</li>
+					<?php endforeach ?>
+				  
 				</ul>
 				<br />
 				<a href="<?= base_url('regulation') ?>" class="btn btn-info float-right">Show All Regulations</a>

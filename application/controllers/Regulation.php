@@ -10,7 +10,7 @@ class Regulation extends CI_Controller
 		// pagination
 		$config['base_url'] = base_url('regulation/index');
 		$config['total_rows'] = $this->db->count_all('regulation');
-		$config['per_page'] = 4;
+		$config['per_page'] = 5;
 		$config['uri_segment'] = 3;
 		$config['attributes'] = array('class' => 'page-link');
 
@@ -37,12 +37,14 @@ class Regulation extends CI_Controller
 		$data['title']="Regulations";
 		$data['breadcrumb']=breadcrumb();
 		$data['regulation']=$this->Regulation_model->get_home_regulation(FALSE,$config['per_page'],$offset);
+		$data['news']=$this->News_model->get_home_news(FALSE,2,FALSE);
 		$this->load->view("templates/header");
 		$this->load->view("regulation/regulation_index",$data);
 		$this->load->view("templates/footer");
 	}
 	public function view($slug){
 		$data['regulation'] = $this->Regulation_model->get_home_regulation($slug);
+		$data['news']=$this->News_model->get_home_news(FALSE,2,FALSE);
 		if (empty($data['regulation'])) {
 			show_404();
 		}

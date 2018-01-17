@@ -39,7 +39,7 @@
     </div>
   </nav>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-primary pl-5 mb-1">
+	<nav class="navbar navbar-expand-lg navbar-light bg-primary sticky-top pl-5 mb-1">
    
       <a class="navbar-brand text-white" href="#"><strong>BSKAPITAL</strong></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

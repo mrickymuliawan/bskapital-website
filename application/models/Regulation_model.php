@@ -33,6 +33,8 @@ class Regulation_model extends CI_Model
 	}
 	public function get_admin_regulation($regulation_id=FALSE){
 		if ($regulation_id==FALSE) {
+			$this->db->order_by('regulation_id','DESC');
+			$this->db->join('user','user.user_id = regulation.user_id');
 			$query=$this->db->get('regulation');
 			return $query->result_array();
 		}
