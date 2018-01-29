@@ -58,7 +58,7 @@ class Regulation extends CI_Controller
 	// ADMIN
 	public function admin(){
 		check_logged_in();
-		$data['title']="regulation";
+		$data['title']="Regulation";
 		$data['regulation']=$this->Regulation_model->get_admin_regulation(); 
 		$this->load->view("admin/templates/header");
 		$this->load->view("admin/templates/sidebar",$data);

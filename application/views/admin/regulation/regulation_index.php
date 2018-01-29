@@ -24,7 +24,7 @@
               <td><?= $key+1 ?></td>
               <td><?= $value['title'] ?></td>
               <td><?= $value['user_id'] ?></td>
-              <td><?= $value['created_at'] ?></td>
+              <td><?= date('d F Y h:i',strtotime($value['created_at'])) ?></td>
               <td>  
                 <a href="<?= base_url("admin/regulation/edit/$value[regulation_id]")?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
                 <button class="btn btn-danger btn-delete" data-toggle="modal" data-target=".modal-delete" value="<?= $value['regulation_id'] ?>"><i class="fa fa-trash"></i></button>

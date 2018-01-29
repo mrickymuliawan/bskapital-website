@@ -15,7 +15,6 @@
               <th>Email</th>
               <th>Name</th>
               <th>Role</th>
-              <th>Created At</th>
               <th>Tools</th>
             </tr>
           </thead>
@@ -26,7 +25,6 @@
               <td><?= $value['email'] ?></td>
               <td><?= "$value[first_name] $value[last_name]" ?></td>
               <td><?= $value['role'] ?></td>
-              <td><?= $value['created_at'] ?></td>
               <td>  
                 <a href="<?= base_url("admin/user/edit/$value[user_id]")?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
                 <button class="btn btn-danger btn-delete" data-toggle="modal" data-target=".modal-delete" value="<?= $value['user_id'] ?>"><i class="fa fa-trash"></i></button>

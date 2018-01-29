@@ -3,7 +3,19 @@
 class Career_model extends CI_Model
 {
 	
+	public function get_home_career($slug = FALSE){ //for home
 
+		if ($slug === false) {
+			$this->db->order_by('career_id','DESC');
+			$this->db->join('user','user.user_id = career.user_id');
+			$query = $this->db->get('career');
+			return $query->result_array();
+		}
+
+		$this->db->join('user','user.user_id = career.user_id');
+		$query=$this->db->get_where('career',array('slug' => $slug));
+		return $query->row_array();
+	}
 	// CRUD FUNCTION
 	public function create_career($image_name)
 	{
@@ -17,7 +29,7 @@ class Career_model extends CI_Model
 		return $this->db->insert('career',$data);
 		
 	}
-	public function get_career($career_id=FALSE){
+	public function get_admin_career($career_id=FALSE){
 		if ($career_id==FALSE) {
 			$query=$this->db->get('career');
 			return $query->result_array();

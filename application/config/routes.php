@@ -61,6 +61,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // $route['categories']='categories/index';
 // $route['(:any)']='page/view/$1';
 
+// career item view
+$route['career/(:any)']='career/view/$1'; 
 $route['admin/career']='career/admin';
 $route['admin/career/create']='career/create';
 $route['admin/career/edit/(:any)']='career/edit/$1';
