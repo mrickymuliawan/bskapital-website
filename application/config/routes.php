@@ -93,6 +93,19 @@ $route['admin/user']='user/admin';
 $route['admin/user/create']='user/create';
 $route['admin/user/edit/(:any)']='user/edit/$1';
 $route['admin/user/delete/(:any)']='user/delete/$1';
+
+
+// subpage item view
+
+$route['admin/subpage/(:any)']='subpage/admin/$1';
+
+$route['subpage/(:any)']='subpage/view/$1'; 
+$route['admin/subpage']='subpage/admin';
+$route['admin/subpage/create/(:any)']='subpage/create/$1';
+$route['admin/subpage/edit/(:any)/(:any)']='subpage/edit/$1/$2';
+$route['admin/subpage/delete/(:any)']='subpage/delete/$1';
+
+
 $route['admin/user/changepassword/(:any)']='user/changepassword/$1';
 
 $route['default_controller'] = 'home';
