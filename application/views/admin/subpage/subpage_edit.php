@@ -29,8 +29,15 @@
       <div class="form-group">
         <label class="control-label">Parent</label>
         <div class="">
-          <input type="text" class="form-control" value="<?= $page['title']?>" />   
+          <input type="text" class="form-control" value="<?= $page['title']?>" / readonly>   
           <input type="hidden" class="form-control" name='page_id' value="<?= $page['page_id']?>" />    
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label"> Change Image (maximum 2MB)</label><br />
+        <small>If you upload new image, old image will be deleted</small>
+        <div class="">
+          <input type="file" name="userfile" size="20" class="form-control" />        
         </div>
       </div>
       <div class="form-group">
@@ -43,6 +50,7 @@
     </div>
     <!-- /.box-body -->
     <div class="box-footer">
+      <input type="hidden" name="image_name" value="<?= $subpage['image_name'] ?>" />
       <input type="hidden" name="sub_page_id" value="<?= $subpage['sub_page_id'] ?>" />
       <button type="submit" class="btn btn-primary pull-right">Submit</button>
     </div>

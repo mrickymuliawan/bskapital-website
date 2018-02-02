@@ -103,7 +103,7 @@ $route['subpage/(:any)']='subpage/view/$1';
 $route['admin/subpage']='subpage/admin';
 $route['admin/subpage/create/(:any)']='subpage/create/$1';
 $route['admin/subpage/edit/(:any)/(:any)']='subpage/edit/$1/$2';
-$route['admin/subpage/delete/(:any)']='subpage/delete/$1';
+$route['admin/subpage/delete/(:any)/(:any)']='subpage/delete/$1/$2';
 
 
 $route['admin/user/changepassword/(:any)']='user/changepassword/$1';

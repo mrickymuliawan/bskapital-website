@@ -23,7 +23,7 @@
       <div class="form-group">
         <label class="control-label">Parent</label>
         <div class="">
-          <input type="text" class="form-control" value="<?= $page['title']?>" />   
+          <input type="text" class="form-control" value="<?= $page['title']?>" readonly/>   
           <input type="hidden" class="form-control" name='page_id' value="<?= $page['page_id']?>" />      
         </div>
       </div>

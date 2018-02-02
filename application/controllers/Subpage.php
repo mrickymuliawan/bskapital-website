@@ -118,7 +118,7 @@ class Subpage extends CI_Controller
 			
 			$this->Subpage_model->create_subpage($image_name);
 			$this->session->set_flashdata('info','Data successfuly created');
-			redirect('admin/subpage');
+			redirect("admin/subpage/$page_title");
 		}
 	}
 	public function edit($page_title,$subpage_id){
@@ -139,14 +139,54 @@ class Subpage extends CI_Controller
 			$this->load->view("admin/templates/footer");	
 		}
 		else{
-			$this->Subpage_model->update_subpage();
+			//  upload image
+			$config['upload_path']='./assets/images/subpage';
+			$config['allowed_types']='gif|jpg|jpeg|png';
+			$config['remove_spaces']=TRUE;
+			$config['max_size']='2048';
+			$config['max_width']='5000';
+			$config['max_height']='5000';
+			$this->load->library('upload',$config);
+			$image_name=$this->input->post('image_name');
+			//if user not choose image, dont upload or just save image name to DB
+			if (!empty($_FILES['userfile']['name'])) {
+				
+				$path=FCPATH."assets/images/subpage/";
+				$image_name=$this->input->post('image_name');
+				$image_path=$path.$image_name;
+				// delete file if exist or if image name isnt default-subpage.jpg
+				if (file_exists($image_path) && $image_name!='default-subpage.jpg') { 
+					unlink($image_path);
+				}
+
+				if (!$this->upload->do_upload()) { //function to upload image to directory
+						// show errors to user
+						$error=$this->upload->display_errors();
+						$this->session->set_flashdata('error',$error);
+						redirect('admin/subpage/create');
+					}
+				$image_name=$this->upload->data('file_name'); //image name
+
+				// compress image
+				$config2['image_library']='gd2';
+				$config2['source_image']='./assets/images/subpage/'.$image_name;
+				$config2['width']=500;
+				$config2['height']=500;
+				$config2['quality']='50%';
+				$this->load->library('image_lib', $config2);
+				if (!$this->image_lib->resize()) {
+					die($this->image_lib->display_errors());
+				}
+				
+			}
+			$this->Subpage_model->update_subpage($image_name);
 			$this->session->set_flashdata('info','Data successfuly updated');
 			redirect("admin/subpage/$page_title");
 		}
 	}
-	public function delete($subpage_id){
+	public function delete($page_title,$subpage_id){
 		check_logged_in();
-		$query=$this->Subpage_model->get_admin_subpage($subpage_id);
+		$query=$this->Subpage_model->get_admin_subpage($page_title,$subpage_id);
 		
 		$path=FCPATH."assets/images/subpage/";
 		$image_name=$query['image_name'];

@@ -44,14 +44,16 @@ class Subpage_model extends CI_Model
 		$query=$this->db->get_where('sub_page',array('sub_page_id'=>$sub_page_id));
 		return $query->row_array();
 	}
-	public function update_subpage()
+	public function update_subpage($image_name)
 	{
 		$sub_page_id=$this->input->post('sub_page_id');
 		$slug=url_title($this->input->post('title'));
 		$data=array(
 			'title'=>$this->input->post('title'),
 			'content'=>$this->input->post('content'),
-			'slug'=>strtolower($slug)
+			'sub_title'=>$this->input->post('sub_title'),
+			'slug'=>strtolower($slug),
+			'image_name'=>$image_name
 			);
 		$this->db->where('sub_page_id',$sub_page_id);
 		return $this->db->update('sub_page',$data);
