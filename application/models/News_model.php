@@ -42,14 +42,15 @@ class News_model extends CI_Model
 		$query=$this->db->get_where('news',array('news_id'=>$news_id));
 		return $query->row_array();
 	}
-	public function update_news()
+	public function update_news($image_name)
 	{
 		$news_id=$this->input->post('news_id');
 		$slug=url_title($this->input->post('title'));
 		$data=array(
 			'title'=>$this->input->post('title'),
 			'content'=>$this->input->post('content'),
-			'slug'=>strtolower($slug)
+			'slug'=>strtolower($slug),
+			'image_name'=>$image_name
 			);
 		$this->db->where('news_id',$news_id);
 		return $this->db->update('news',$data);

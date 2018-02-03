@@ -50,19 +50,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-// $route['posts/index']='posts/index';
-// $route['posts/create']='posts/create';
-// $route['posts/update']='posts/update';
-// $route['posts/(:any)']='posts/view/$1';
-// $route['posts'] = 'posts/index';
-
-// $route['categories/create']='categories/create';
-// $route['categories/posts/(:any)']='categories/posts/$1';
-// $route['categories']='categories/index';
-// $route['(:any)']='page/view/$1';
 
 // career item view
 $route['career/(:any)']='career/view/$1'; 
+// admin crud
 $route['admin/career']='career/admin';
 $route['admin/career/create']='career/create';
 $route['admin/career/edit/(:any)']='career/edit/$1';
@@ -89,21 +80,40 @@ $route['admin/regulation/create']='regulation/create';
 $route['admin/regulation/edit/(:any)']='regulation/edit/$1';
 $route['admin/regulation/delete/(:any)']='regulation/delete/$1';
 
+// user admin crud
 $route['admin/user']='user/admin';
 $route['admin/user/create']='user/create';
 $route['admin/user/edit/(:any)']='user/edit/$1';
 $route['admin/user/delete/(:any)']='user/delete/$1';
 
 
-// subpage item view
+// subpage admin crud (services,contact,about,people)
 
 $route['admin/subpage/(:any)']='subpage/admin/$1';
 
-$route['subpage/(:any)']='subpage/view/$1'; 
 $route['admin/subpage']='subpage/admin';
 $route['admin/subpage/create/(:any)']='subpage/create/$1';
 $route['admin/subpage/edit/(:any)/(:any)']='subpage/edit/$1/$2';
 $route['admin/subpage/delete/(:any)/(:any)']='subpage/delete/$1/$2';
+
+// services item view
+$route['services']='page/services'; 
+$route['services/(:any)']='page/services/index/$1'; 
+// contact item view
+$route['contact']='page/contact'; 
+$route['contact/(:any)']='page/contact/index/$1'; 
+// about item view
+$route['about']='page/about'; 
+$route['about/(:any)']='page/about/index/$1'; 
+// people item view
+$route['people']='page/people'; 
+$route['people/(:any)']='page/people/index/$1'; 
+
+// slider admin crud
+$route['admin/slider']='slider/admin';
+$route['admin/slider/create']='slider/create';
+$route['admin/slider/edit/(:any)']='slider/edit/$1';
+$route['admin/slider/delete/(:any)']='slider/delete/$1';
 
 
 $route['admin/user/changepassword/(:any)']='user/changepassword/$1';

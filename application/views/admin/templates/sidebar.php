@@ -22,6 +22,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
+
         <li><a href="<?= base_url("admin/news") ?>"> <i class="fa fa-newspaper-o"></i> <span>News</span> </a></li>
         <li><a href="<?= base_url("admin/regulation") ?>"> <i class="fa fa-balance-scale"></i> <span>Regulation</span></a></li>
         <li><a href="<?= base_url("admin/user") ?>"> <i class="fa fa-user"></i> <span>User</span></a></li>
@@ -32,6 +33,7 @@
         <li><a href="<?= base_url("admin/subpage/people") ?>"> <i class="fa fa-user"></i> <span>Our People</span></a></li>
         <li><a href="<?= base_url("admin/subpage/about") ?>"> <i class="fa fa-user"></i> <span>About Us</span></a></li>
         <li><a href="<?= base_url("admin/subpage/contact") ?>"> <i class="fa fa-user"></i> <span>Contact Us</span></a></li>
+        <li><a href="<?= base_url("admin/slider") ?>"> <i class="fa fa-newspaper-o"></i> <span>Slider</span> </a></li>
         <!-- <li class="treeview">
           <a href="#"> <i class="fa fa-file"></i> <span>Page</span>
             <span class="pull-right-container">

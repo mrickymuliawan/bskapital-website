@@ -5,55 +5,19 @@ class Subpage extends CI_Controller
 	{
 		parent::__construct();
 	}
-	public function index($offset = 0)
-	{
-		// pagination
-		$config['base_url'] = base_url('subpage/index');
-		$config['total_rows'] = $this->db->count_all('subpage');
-		$config['per_subpage'] = 5;
-		$config['uri_segment'] = 3;
-		$config['attributes'] = array('class' => 'subpage-link');
-
-		$config['full_tag_open'] = '<ul class="pagination">';
-		$config['full_tag_close'] = '</ul>';
-		$config['first_link'] = '&laquo; First';
-		$config['first_tag_open'] = '<li class="subpage-item">';
-		$config['first_tag_close'] = '</li>';
-		$config['last_link'] = 'Last &raquo;';
-		$config['last_tag_open'] = '<li class="subpage-item">';
-		$config['last_tag_close'] = '</li>';
-		$config['next_link'] = 'Next &rarr;';
-		$config['next_tag_open'] = '<li class="subpage-item">';
-		$config['next_tag_close'] = '</li>';
-		$config['prev_link'] = '&larr; Previous';
-		$config['prev_tag_open'] = '<li class="subpage-item">';
-		$config['prev_tag_close'] = '</li>';
-		$config['cur_tag_open'] = '<li class="subpage-item active"><a href="" class="subpage-link">';
-		$config['cur_tag_close'] = '</a></li>';
-		$config['num_tag_open'] = '<li class="subpage-item">';
-		$config['num_tag_close'] = '</li>';
-		$this->pagination->initialize($config);
-
-		$data['title']="subpage";
-		$data['breadcrumb']=breadcrumb();
-		$data['subpage']=$this->Subpage_model->get_home_subpage(FALSE,$config['per_subpage'],$offset);
-		$data['regulation']=$this->Regulation_model->get_home_regulation(FALSE,3,FALSE);
-		$this->load->view("templates/header");
-		$this->load->view("subpage/subpage_index",$data);
-		$this->load->view("templates/footer");
-	}
-	public function view($slug){
-		$data['subpage'] = $this->Subpage_model->get_home_subpage($slug);
-		$data['regulation']=$this->Regulation_model->get_home_regulation(FALSE,3,FALSE);
-		if (empty($data['subpage'])) {
-			show_404();
-		}
-		$data['title'] = $data['subpage']['title'];
-		$data['breadcrumb']=breadcrumb();
-		$this->load->view("templates/header");
-		$this->load->view("subpage/subpage_view",$data);
-		$this->load->view("templates/footer");	
-	}
+	
+	// public function view($slug){
+	// 	$data['sub_page_list'] = $this->Subpage_model->get_home_subpage();
+	// 	$data['sub_page'] = $this->Subpage_model->get_home_subpage($slug);
+	// 	if (empty($data['sub_page'])) {
+	// 		show_404();
+	// 	}
+	// 	$data['title'] = $data['sub_page']['title'];
+	// 	$data['breadcrumb']=breadcrumb();
+	// 	$this->load->view("templates/header");
+	// 	$this->load->view("subpage/subpage_view",$data);
+	// 	$this->load->view("templates/footer");	
+	// }
 
 	// ADMIN
 	public function admin($page_title){
@@ -148,7 +112,8 @@ class Subpage extends CI_Controller
 			$config['max_height']='5000';
 			$this->load->library('upload',$config);
 			$image_name=$this->input->post('image_name');
-			//if user not choose image, dont upload or just save image name to DB
+
+			//if user choose image
 			if (!empty($_FILES['userfile']['name'])) {
 				
 				$path=FCPATH."assets/images/subpage/";
@@ -179,6 +144,7 @@ class Subpage extends CI_Controller
 				}
 				
 			}
+
 			$this->Subpage_model->update_subpage($image_name);
 			$this->session->set_flashdata('info','Data successfuly updated');
 			redirect("admin/subpage/$page_title");

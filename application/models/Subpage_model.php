@@ -3,18 +3,19 @@
 class Subpage_model extends CI_Model
 {
 	
-	public function get_home_subpage($slug = FALSE,$limit = FALSE,$offset= FALSE){ //for home
-		if ($limit) {
-			$this->db->limit($limit,$offset);
-		}
+	public function get_home_subpage($page_title=FALSE,$slug = FALSE){ //for home
+		// if ($limit) {
+		// 	$this->db->limit($limit,$offset);
+		// }
 		if ($slug === false) {
 			$this->db->order_by('sub_page_id','DESC');
+			$this->db->select('sub_page.*,page.title page_title');
 			$this->db->join('page','page.page_id = sub_page.page_id');
-			$query = $this->db->get('sub_page');
+			$query=$this->db->get_where('sub_page',array('page.title' => $page_title));
 			return $query->result_array();
 		}
 
-		$this->db->join('user','user.user_id = subpage.user_id');
+		// $this->db->join('user','user.user_id = sub_page.user_id');
 		$query=$this->db->get_where('sub_page',array('slug' => $slug));
 		return $query->row_array();
 	}
