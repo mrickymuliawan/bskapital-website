@@ -16,32 +16,31 @@
 	</head>
 	<body>
 
-	<nav class="navbar navbar-expand-lg py-0 ">
-    <div class="container">
- 
-      <ul class="navbar-nav">
-        <li class="nav-item">
-         <a class="nav-link text-primary" href="<?= base_url('') ?>"> <span class="fa fa-envelope"></span> admin@bskapital.co.id</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-primary" href="<?= base_url('') ?>"> <span class="fa fa-map-marker"></span>Jl. 123 no 888 Jakarta</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link text-primary" href="<?= base_url('') ?>"> <span class="fa fa-facebook"></span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-primary" href="<?= base_url('') ?>"> <span class="fa fa-instagram"></span></a>
-        </li>
-      </ul>
+
+    <div class="container py-2">
+      <div class="row">
+        <div class="col-sm-10">
+          <a class="mr-3 text-primary" href="<?= base_url('') ?>"> <span class="fa fa-envelope"></span> admin@bskapital.co.id</a>
+          <a class="mr-3 text-primary" href="<?= base_url('') ?>"> <span class="fa fa-map-marker"></span>Jl. 123 no 888 Jakarta</a>
+        </div><!-- /.col-sm-6 -->
+        <div class="col-sm-2 ">
+          <a class="mr-3 text-primary" href="<?= base_url('') ?>"> <span class="fa fa-facebook"></span></a>
         
+        
+          <a class="mr-3 text-primary" href="<?= base_url('') ?>"> <span class="fa fa-instagram"></span></a>
+        
+       
+          <a class="mr-3 text-primary" href=http://timesheet.bskapital.co.id> <span class="fa fa-calendar"></span></a>
+       
+        </div><!-- /.col-sm6 -->
+      </div><!-- /.row -->
+          
     </div>
-  </nav>
+ 
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-primary sticky-top pl-5 mb-1">
    
-      <a class="navbar-brand text-white" href="#"><strong>BSKAPITAL</strong></a>
+      <a class="navbar-brand text-white" href="<?= base_url('') ?>"><strong>BSKAPITAL</strong></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -71,10 +70,10 @@
           </li>
         </ul>
         
-        <form class="form-inline">
+       <!--  <form class="form-inline">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn bg-white my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </form> -->
 
       </div>
   </nav>

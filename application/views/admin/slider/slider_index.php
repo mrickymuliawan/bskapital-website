@@ -1,7 +1,7 @@
 
 <div class="box">
   <div class="box-header with-border">
-    <a href="<?= base_url('admin/slider/create')?>" class="btn btn-primary">Create slider</a>
+    <!-- <a href="<?= base_url('admin/slider/create')?>" class="btn btn-primary">Create slider</a> -->
   </div>
   <!-- /.box-header -->
   <div class="box-body">
@@ -27,7 +27,6 @@
               <td><?= date('d F Y h:i',strtotime($value['created_at'])) ?></td>
               <td>  
                 <a href="<?= base_url("admin/slider/edit/$value[slider_id]")?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                <button class="btn btn-danger btn-delete" data-toggle="modal" data-target=".modal-delete" value="<?= $value['slider_id'] ?>"><i class="fa fa-trash"></i></button>
               </td>
             </tr>
           <?php endforeach ?>

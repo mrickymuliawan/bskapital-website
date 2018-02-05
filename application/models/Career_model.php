@@ -3,8 +3,10 @@
 class Career_model extends CI_Model
 {
 	
-	public function get_home_career($slug = FALSE){ //for home
-
+	public function get_home_career($slug = FALSE,$limit=FALSE){ //for home
+		if ($limit) {
+			$this->db->limit($limit);
+		}
 		if ($slug === false) {
 			$this->db->order_by('career_id','DESC');
 			$this->db->join('user','user.user_id = career.user_id');

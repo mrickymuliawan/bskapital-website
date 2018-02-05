@@ -1,5 +1,5 @@
 
-<header class="py-2">
+<header class="">
 
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -12,7 +12,7 @@
     		<div class="carousel-item <?php if ($key==0): ?> active <?php endif ?>">
           <div class="row">
             <div class="col-md-12 carousel-column">
-              <img class="d-block w-100 h-100" src="<?=base_url("assets/images/slider/$value[image_name]") ?>" alt="First slide">
+              <img class="d-block w-100" src="<?=base_url("assets/images/slider/$value[image_name]") ?>" alt="First slide">
 	              
             </div><!-- /.col -->
             <div class="col-lg-10">
@@ -43,19 +43,8 @@
 	<div class="container">
 	  <div class="row">
 	  	<div class="col-md-12">
-	  		<h2 class="">Welcome to <strong>BSKAPITAL</strong></h2>
-
-	  		<p>
-	  			<b>
-	  				The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
-	  			</b>
-	  		</p>
-	  		<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. 
-				</p>
-				<p>
-					The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then
-				</p>
-				<a href="" class="btn btn-primary">About Us</a href="">
+	  		<?= $about['content'] ?>
+				<a href="<?= base_url('about') ?>" class="btn btn-primary">About Us</a href="">
 	  	</div>
 	  </div>
 	</div><!-- /.container -->
@@ -76,46 +65,21 @@
 	<div class="container">
 		<h2 class="text-center">SERVICES</h2>
 	  <div class="row">
+	  	<?php foreach ($services as $key => $value): ?>
 	  	<div class="col-md-4">
-	  		<div class="card">
-				  <img class="card-img-top" src="<?=base_url("assets/images/home/carousel3.jpg") ?>" alt="Card image cap">
+	  		<div class="card hover-shadow">
+				  <img class="card-img-top" src="<?=base_url("assets/images/subpage/$value[image_name]") ?>" alt="Card image cap">
 				  <div class="card=block p-2">
-				    <h4 class="card-title">Tax Advisory Services</h4>
-				    <p class="card-text text-muted">Tax issues are a crucial component in any company's operations. With Indonesian tax regulations growing more complicated, and tax officials becoming...</p>
+				    <h4 class="card-title"><?= ucwords($value['title']) ?></h4>
+				    <?= strip_tags(word_limiter($value['content'],30)) ?>
 				  </div>
 				  <div class="card-block">
-				    <a href="#" class="btn btn-info btn-block ">Find Out More</a>
+				    <a href="<?=base_url("services/$value[slug]") ?>"" class="btn btn-info btn-block ">Find Out More</a>
 				  </div><!-- /.card-block -->
 				</div>
 	  	</div><!-- /.col-md-4 -->
-	  	<div class="col-md-4">
-	  		<div class="card">
-				  <img class="card-img-top" src="<?=base_url("assets/images/home/carousel3.jpg") ?>" alt="Card image cap">
-				  <div class="card-block p-2">
-				    <h4 class="card-title">Tax Compliance Services</h4>
-				    <p class="card-text text-muted">
-							“Because Time is Your Most Valuable Asset” Tax and financial issues are crucial components in any company’s operations. Failure to...
-						</p>
-				  </div>
-				  <div class="card-block">
-				    <a href="#" class="btn btn-info btn-block ">Find Out More</a>
-				  </div><!-- /.card-block -->
-				</div>
-	  	</div><!-- /.col-md-4 -->
-	  	<div class="col-md-4">
-	  		<div class="card">
-				  <img class="card-img-top" src="<?=base_url("assets/images/home/carousel3.jpg") ?>" alt="Card image cap">
-				  <div class="card-block p-2">
-				    <h4 class="card-title">Transfer Pricing Services</h4>
-				    <p class="card-text text-muted">
-				    	With a significant occurrence of cross border transactions, the importance of transfer pricing rule has captured the tax authority’s attention. In...
-						</p>				   
-				  </div>				  
-				  <div class="card-block">
-				    <a href="#" class="btn btn-info btn-block ">Find Out More</a>
-				  </div><!-- /.card-block -->
-				</div>
-	  	</div><!-- /.col-md-4 -->
+	  	<?php endforeach ?>
+	  	
 	  </div><!-- /.row -->
 	</div><!-- /.container -->
 </section>	
@@ -125,29 +89,41 @@
 		<div class="row">
 			<div class="col-md-6">
 			<h2 class="text-center">LATEST NEWS</h2>
-	  		<div class="card">
-				  <img class="card-img-top" src="<?=base_url("assets/images/home/carousel3.jpg") ?>" alt="Card image cap">
+				<?php foreach ($news as $key => $value): ?>
+				
+	  		<div class="card hover-shadow">
+	  			<a href="<?= base_url("news/$value[slug]") ?>">
+				 	 <img class="card-img-top" src="<?=base_url("assets/images/news/$value[image_name]") ?>" alt="Card image cap">
+				  </a>	
 				  <div class="card-block p-2">
-				    <h4 class="card-title">News Title</h4>
-				    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				    <h4 class="card-title"><?= ucwords($value['title']) ?></h4>
+				    <p>
+				    <?= date('d F Y',strtotime($value['created_at']))." by <b>$value[first_name]</b>" ?>			    	
+				    </p>
+				    <?= strip_tags(word_limiter($value['content'],30)) ?>
 				    
-				    <small>7 Oct 2017 by Admin</small><a href="#" class="float-right">Read More</a>
+				    <br /><br />
+				    <a href="<?= base_url("news/$value[slug]") ?>" class="btn float-right">Read More</a>
 				  </div>
 				</div>
+				<?php endforeach ?>	
 				<br />
-				<button class="btn btn-info float-right">Show All News</button>
+				<a href="<?=base_url("news")?>" class="btn btn-info float-right">Show All News</a>
 			</div><!-- /.col-md-6 -->
 			<div class="col-md-6">
 				<h2 class="text-center">LATEST REGULATIONS</h2>
 				<ul class="list-group">
-				  <li class="list-group-item"><a href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item"><a href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item"><a href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item"><a href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
-				  <li class="list-group-item"><a href="">MoF Regulation No. 118/PMK.03/2016Concerning Implementation of Laws No. 11 Year 2016</a></li>
+					<?php foreach ($regulation as $key => $value): ?>
+				  	<li class="list-group-item">
+				  		<a href="<?= base_url("regulation/$value[slug]") ?>">
+				  			<?= $value['title'] ?>
+				  		</a>
+				  	</li>
+						
+					<?php endforeach ?>
 				</ul>
 				<br />
-				<button class="btn btn-info float-right">Show All Regulations</button>
+				<a href="<?=base_url("regulation")?>" class="btn btn-info float-right">Show All Regulations</a>
 			</div><!-- /.col-md-6 -->
 		</div><!-- /.row -->
 	</div><!-- /.container -->
@@ -159,20 +135,17 @@
 		<!-- <p>Jobs Offer</p> -->
 		<hr />
 	  <div class="row">
+	  <?php foreach ($career as $key => $value): ?>
 	  	<div class="col-md-6 p-4 bg-light text-dark">
-				<h4>HR Analyst</h4>
+				<h4><?= ucwords($value['title']) ?></h4>
 				<p class="text-muted">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+					<?= strip_tags(word_limiter($value['content'],30)) ?>
 				</p>
-				<button class="btn btn-default">Read More</button>
+				<a href="<?=base_url("career/$value[slug]")?>" class="btn btn-secondary">Read More</a>
 	  	</div>
-	  	<div class="col-md-6 p-4 bg-light text-dark">
-				<h4>Auditor</h4>
-				<p class="text-muted">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-				</p>
-				<button class="btn btn-default">Read More</button>
-	  	</div>
+	  	
+	  <?php endforeach ?>
+	  <a href="<?=base_url("career")?>" class="btn bg-white mt-2 btn-block">See All Careers</a>
 	  </div>
 	</div><!-- /.container -->
 </section>	

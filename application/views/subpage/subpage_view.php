@@ -14,8 +14,13 @@
 				<ul class="list-group">
 
 					<?php foreach ($sub_page_list as $key => $value): ?>
-						<li class="list-group-item"><a class="" href="<?= base_url("$page_title/$value[slug]") ?>"><?= ucwords($value['title']) ?> <span class="fa fa-chevron-right float-right"></a> </span></li>
+						
+						<?php if ($value['title']!='homepage'): ?>
+							<li class="list-group-item"><a class="" href="<?= base_url("$page_title/$value[slug]") ?>"><?= ucwords($value['title']) ?> <span class="fa fa-chevron-right float-right"></a> </span></li>
+						<?php endif ?>
+
 					<?php endforeach ?>
+
 					<?php if ($page_title=='about'): ?>
 						<li class="list-group-item"><a class="" href="<?= base_url("people") ?>">
 						Our People<span class="fa fa-chevron-right float-right"></a> </span></li>

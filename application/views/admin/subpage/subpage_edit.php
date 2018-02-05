@@ -6,6 +6,8 @@
 
   <?php echo form_open_multipart("admin/subpage/edit/$page[title]/$subpage[sub_page_id]"); ?>
     <div class="box-body">
+      
+      <?php if ($subpage['slug']!='homepage'): ?>
       <div class="form-group">
         <label class="control-label"> Uploaded Image</label>
         <div class="">
@@ -25,7 +27,7 @@
         <div class="">
           <input type="text" class="form-control" placeholder="sub title" name="sub_title" value="<?= $subpage['sub_title'] ?>">
         </div>
-      </div>
+      </div> 
       <div class="form-group">
         <label class="control-label">Parent</label>
         <div class="">
@@ -39,7 +41,18 @@
         <div class="">
           <input type="file" name="userfile" size="20" class="form-control" />        
         </div>
+      </div> 
+      <?php else: ?>
+      <div class="form-group">
+        <label class="control-label">Title</label>
+
+        <div class="">
+          <input type="text" class="form-control" placeholder="title" name="title" value="<?= $subpage['title'] ?>" readonly>
+        </div>
       </div>
+      <?php endif ?>
+      
+      
       <div class="form-group">
         <label class="control-label">Content</label>
 

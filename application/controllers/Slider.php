@@ -78,7 +78,7 @@ class Slider extends CI_Controller
 				// compress image
 				$config2['image_library']='gd2';
 				$config2['source_image']='./assets/images/slider/'.$image_name;
-				$config2['width']=1000;
+				$config2['width']=1600;
 				$config2['height']=700;
 				$config2['quality']='50%';
 				$this->load->library('image_lib', $config2);
@@ -142,8 +142,8 @@ class Slider extends CI_Controller
 				// compress image
 				$config2['image_library']='gd2';
 				$config2['source_image']='./assets/images/slider/'.$image_name;
-				$config2['width']=1000;
-				$config2['height']=700;
+				$config2['width']=1600;
+				$config2['height']=1000;
 				$config2['quality']='50%';
 				$this->load->library('image_lib', $config2);
 				if (!$this->image_lib->resize()) {

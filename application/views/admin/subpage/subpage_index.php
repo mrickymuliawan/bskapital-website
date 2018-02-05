@@ -27,9 +27,12 @@
               <td><?= $value['title'] ?></td>
               <td><?= $value['page_title'] ?></td>
               <td><?= date('d F Y h:i',strtotime($value['created_at'])) ?></td>
-              <td>  
+              <td>                  
                 <a href="<?= base_url("admin/subpage/edit/$value[page_title]/$value[sub_page_id]")?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                <button class="btn btn-danger btn-delete" data-toggle="modal" data-target=".modal-delete" value="<?= "$value[page_title]/$value[sub_page_id]" ?>"><i class="fa fa-trash"></i></button>
+                <?php if ($value['slug']!='homepage'): ?>
+                  <button class="btn btn-danger btn-delete" data-toggle="modal" data-target=".modal-delete" value="<?= "$value[page_title]/$value[sub_page_id]" ?>"><i class="fa fa-trash"></i></button>
+                <?php endif ?>
+                
               </td>
             </tr>
           <?php endforeach ?>
