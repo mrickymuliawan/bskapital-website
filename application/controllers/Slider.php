@@ -7,35 +7,9 @@ class Slider extends CI_Controller
 	}
 	public function index($offset = 0)
 	{
-		// pagination
-		$config['base_url'] = base_url('slider/index');
-		$config['total_rows'] = $this->db->count_all('slider');
-		$config['per_page'] = 5;
-		$config['uri_segment'] = 3;
-		$config['attributes'] = array('class' => 'page-link');
 
-		$config['full_tag_open'] = '<ul class="pagination">';
-		$config['full_tag_close'] = '</ul>';
-		$config['first_link'] = '&laquo; First';
-		$config['first_tag_open'] = '<li class="page-item">';
-		$config['first_tag_close'] = '</li>';
-		$config['last_link'] = 'Last &raquo;';
-		$config['last_tag_open'] = '<li class="page-item">';
-		$config['last_tag_close'] = '</li>';
-		$config['next_link'] = 'Next &rarr;';
-		$config['next_tag_open'] = '<li class="page-item">';
-		$config['next_tag_close'] = '</li>';
-		$config['prev_link'] = '&larr; Previous';
-		$config['prev_tag_open'] = '<li class="page-item">';
-		$config['prev_tag_close'] = '</li>';
-		$config['cur_tag_open'] = '<li class="page-item active"><a href="" class="page-link">';
-		$config['cur_tag_close'] = '</a></li>';
-		$config['num_tag_open'] = '<li class="page-item">';
-		$config['num_tag_close'] = '</li>';
-		$this->pagination->initialize($config);
-
-		$data['title']="slider";
-		$data['breadcrumb']=breadcrumb();
+		// $data['title']="Slider";
+		// $data['breadcrumb']=breadcrumb();
 		$data['slider']=$this->Slider_model->get_home_slider(FALSE,$config['per_page'],$offset);
 		$data['regulation']=$this->Regulation_model->get_home_regulation(FALSE,3,FALSE);
 		$this->load->view("templates/header");
@@ -104,8 +78,8 @@ class Slider extends CI_Controller
 				// compress image
 				$config2['image_library']='gd2';
 				$config2['source_image']='./assets/images/slider/'.$image_name;
-				$config2['width']=500;
-				$config2['height']=500;
+				$config2['width']=1000;
+				$config2['height']=700;
 				$config2['quality']='50%';
 				$this->load->library('image_lib', $config2);
 				if (!$this->image_lib->resize()) {
@@ -147,28 +121,29 @@ class Slider extends CI_Controller
 
 			//if user choose image
 			if (!empty($_FILES['userfile']['name'])) {
-				
-				$path=FCPATH."assets/images/slider/";
-				$image_name=$this->input->post('image_name');
-				$image_path=$path.$image_name;
-				// delete file if exist or if image name isnt default-slider.jpg
-				if (file_exists($image_path) && $image_name!='default-slider.jpg') { 
-					unlink($image_path);
-				}
-
+				// upload new image
 				if (!$this->upload->do_upload()) { //function to upload image to directory
 						// show errors to user
 						$error=$this->upload->display_errors();
 						$this->session->set_flashdata('error',$error);
-						redirect('admin/slider/create');
+						redirect("admin/slider/edit/$slider_id");
 					}
-				$image_name=$this->upload->data('file_name'); //image name
+				$image_name=$this->upload->data('file_name'); //new image name
+
+				// delete old image
+				$path=FCPATH."assets/images/slider/";
+				$old_image_name=$this->input->post('image_name');
+				$image_path=$path.$old_image_name;
+				// delete file if exist or if image name isnt default-slider.jpg
+				if (file_exists($image_path) && $old_image_name!='default-slider.jpg') { 
+					unlink($image_path);
+				}
 
 				// compress image
 				$config2['image_library']='gd2';
 				$config2['source_image']='./assets/images/slider/'.$image_name;
-				$config2['width']=500;
-				$config2['height']=500;
+				$config2['width']=1000;
+				$config2['height']=700;
 				$config2['quality']='50%';
 				$this->load->library('image_lib', $config2);
 				if (!$this->image_lib->resize()) {

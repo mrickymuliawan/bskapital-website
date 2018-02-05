@@ -2,3 +2,19 @@
 body{
 	font-family: 'raleway';
 }
+
+@media screen and (min-width: 400px) {
+   .carousel-column{
+			height: 350px; 
+		}
+}
+@media screen and (min-width: 1000px) {
+   .carousel-column{
+			height: 450px; 
+		}
+}
+.carousel-caption{
+	background: rgba(0,0,0,0.4);
+	border-radius: 5px;
+	/*width: 100%;*/
+}

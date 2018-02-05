@@ -1,62 +1,42 @@
 
-<header class="mb-5 py-5">
+<header class="py-2">
 
-	<div class="container-fluid">
-	  <div class="row">
-	    <div class="col-md-12">
-	      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-	        <ol class="carousel-indicators">
-	          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-	          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-	          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-	        </ol>
-	        <div class="carousel-inner" role="listbox">
-	          <div class="carousel-item active">
-	            <div class="row">
-	              <div class="col">
-	                <img class="d-block w-100" src="<?=base_url("assets/images/home/carousel1.jpg") ?>" alt="First slide">
-	              </div><!-- /.col -->
-	              <div class="col">
-	                <h1>Ini adalah blabla</h1>
-	                <p>paragraf</p>
-	              </div><!-- /.col -->
-	            </div><!-- /.row -->
-	          </div>
-	          <div class="carousel-item">
-	            <div class="row">
-	              <div class="col">
-	                <img class="d-block w-100" src="<?=base_url("assets/images/home/carousel2.jpg") ?>" alt="First slide">
-	              </div><!-- /.col -->
-	              <div class="col">
-	                <h1>Ini adalah blabla</h1>
-	                <p>paragraf</p>
-	              </div><!-- /.col -->
-	            </div><!-- /.row -->
-	          </div>
-	          <div class="carousel-item">
-	            <div class="row">
-	              <div class="col">
-	                <img class="d-block w-100" src="<?=base_url("assets/images/home/carousel3.jpg") ?>" alt="First slide">
-	              </div><!-- /.col -->
-	              <div class="col">
-	                <h1>Ini adalah blabla</h1>
-	                <p>paragraf</p>
-	              </div><!-- /.col -->
-	            </div><!-- /.row -->
-	          </div>
-	        </div>
-	        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-	          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	          <span class="sr-only">Previous</span>
-	        </a>
-	        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-	          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	          <span class="sr-only">Next</span>
-	        </a>
-	      </div>
-	    </div><!-- /.col-md-12 -->
-	  </div><!-- /.row-->
-	 </div><!-- /.container -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+    	<?php foreach ($slider as $key => $value): ?>
+    		<div class="carousel-item <?php if ($key==0): ?> active <?php endif ?>">
+          <div class="row">
+            <div class="col-md-12 carousel-column">
+              <img class="d-block w-100 h-100" src="<?=base_url("assets/images/slider/$value[image_name]") ?>" alt="First slide">
+	              
+            </div><!-- /.col -->
+            <div class="col-lg-10">
+            	<div class="carousel-caption text-justify px-2">
+						    <h3><?=$value['title']?></h3>
+						    <h5><?=$value['sub_title']?></h5>
+						    <p><?=$value['content']?></p>
+						    <button class="btn btn-primary">See More</button>
+						  </div>
+            </div><!-- /.col-md-8 -->
+          </div><!-- /.row -->
+        </div>
+    	<?php endforeach ?>
+      
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="fa fa-angle-left fa-2x" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="fa fa-angle-right fa-2x" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 </header>	
 
 <section class="bg-light py-5">

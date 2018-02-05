@@ -3,12 +3,12 @@
 class Subpage_model extends CI_Model
 {
 	
-	public function get_home_subpage($page_title=FALSE,$slug = FALSE){ //for home
-		// if ($limit) {
-		// 	$this->db->limit($limit,$offset);
-		// }
+	public function get_home_subpage($page_title=FALSE,$slug = FALSE,$limit=FALSE){ //for home
+		if ($limit) {
+			$this->db->limit($limit);
+		}
 		if ($slug === false) {
-			$this->db->order_by('sub_page_id','DESC');
+			// $this->db->order_by('sub_page_id','DESC');
 			$this->db->select('sub_page.*,page.title page_title');
 			$this->db->join('page','page.page_id = sub_page.page_id');
 			$query=$this->db->get_where('sub_page',array('page.title' => $page_title));

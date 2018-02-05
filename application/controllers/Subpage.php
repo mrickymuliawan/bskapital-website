@@ -116,21 +116,23 @@ class Subpage extends CI_Controller
 			//if user choose image
 			if (!empty($_FILES['userfile']['name'])) {
 				
-				$path=FCPATH."assets/images/subpage/";
-				$image_name=$this->input->post('image_name');
-				$image_path=$path.$image_name;
-				// delete file if exist or if image name isnt default-subpage.jpg
-				if (file_exists($image_path) && $image_name!='default-subpage.jpg') { 
-					unlink($image_path);
-				}
-
+				// upload new image
 				if (!$this->upload->do_upload()) { //function to upload image to directory
 						// show errors to user
 						$error=$this->upload->display_errors();
 						$this->session->set_flashdata('error',$error);
-						redirect('admin/subpage/create');
+						redirect("admin/subpage/edit/$page_title/$subpage_id");
 					}
-				$image_name=$this->upload->data('file_name'); //image name
+				$image_name=$this->upload->data('file_name'); //new image name
+
+				// delete old image
+				$path=FCPATH."assets/images/subpage/";
+				$old_image_name=$this->input->post('image_name');
+				$image_path=$path.$old_image_name;
+				// delete file if exist or if image name isnt default-subpage.jpg
+				if (file_exists($image_path) && $old_image_name!='default-subpage.jpg') { 
+					unlink($image_path);
+				}
 
 				// compress image
 				$config2['image_library']='gd2';

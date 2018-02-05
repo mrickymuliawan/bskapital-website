@@ -21,16 +21,17 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="control-label"> Upload Image (maximum 2MB)</label>
+        <label class="control-label"> Upload Image (maximum 2MB) </label><br />
+        <small>Min width 1000px</small>
         <div class="">
           <input type="file" name="userfile" size="20" class="form-control" />        
         </div>
       </div>
       <div class="form-group">
-        <label class="control-label">Content</label>
-
+        <label class="control-label">Content</label><br />
+        <small>Max 100 letters</small>
         <div class="">
-          <textarea name="content" rows="20" class="form-control texteditor"><?= set_value('content'); ?></textarea>
+          <textarea name="content" rows="2" class="form-control" maxlength="100"><?= set_value('content'); ?></textarea>
         </div>
       </div>
       

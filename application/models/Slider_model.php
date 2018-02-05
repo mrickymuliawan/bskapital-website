@@ -3,13 +3,13 @@
 class Slider_model extends CI_Model
 {
 	
-	public function get_home_slider($slug = FALSE,$limit = FALSE,$offset= FALSE){ //for home
+	public function get_home_slider($slug = FALSE,$limit = FALSE){ //for home
 		if ($limit) {
-			$this->db->limit($limit,$offset);
+			$this->db->limit($limit);
 		}
 		if ($slug === false) {
 			$this->db->order_by('slider_id','DESC');
-			$this->db->join('user','user.user_id = slider.user_id');
+			// $this->db->join('user','user.user_id = slider.user_id');
 			$query = $this->db->get('slider');
 			return $query->result_array();
 		}

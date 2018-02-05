@@ -17,7 +17,7 @@
 					<hr />
 				</div><!-- /.post-head -->
 				<div class="post-body p-2">
-					<img class="w-75" src="<?=base_url("assets/images/news/$news[image_name]") ?>" alt="" />
+					<img class="img-fluid" src="<?=base_url("assets/images/news/$news[image_name]") ?>" alt="" />
 					<br /><br />
 					<p>
 						<?= $news['content'] ?>
