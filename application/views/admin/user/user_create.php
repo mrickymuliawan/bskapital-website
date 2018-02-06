@@ -41,7 +41,7 @@
         <div class="col-sm-10">
           <select class="form-control" name='role'>
             <option value="administrator">Administrator</option>
-            <option value="author">Author</option>
+            <!-- <option value="author">Author</option> -->
           </select> 
         </div>
       </div>

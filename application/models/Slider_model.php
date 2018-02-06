@@ -65,16 +65,6 @@ class Slider_model extends CI_Model
 	}
 
 
-	// HELPER FUNCTION
-	// public function check_email_exists($email){
-	// 	$query=$this->db->get_where('user',array('email'=>$email));
-	// 	if ($query->num_rows()<1) {
-	// 		return true; //data belum ada
-	// 	}
-	// 	else{
-	// 		return false; //data sudah ada
-	// 	}
-	// }
 
 
 }

@@ -5,24 +5,11 @@ class Subpage extends CI_Controller
 	{
 		parent::__construct();
 	}
-	
-	// public function view($slug){
-	// 	$data['sub_page_list'] = $this->Subpage_model->get_home_subpage();
-	// 	$data['sub_page'] = $this->Subpage_model->get_home_subpage($slug);
-	// 	if (empty($data['sub_page'])) {
-	// 		show_404();
-	// 	}
-	// 	$data['title'] = $data['sub_page']['title'];
-	// 	$data['breadcrumb']=breadcrumb();
-	// 	$this->load->view("templates/header");
-	// 	$this->load->view("subpage/subpage_view",$data);
-	// 	$this->load->view("templates/footer");	
-	// }
 
 	// ADMIN
 	public function admin($page_title){
 		check_logged_in();
-		$data['title']="subpage";
+		$data['title']="Page $page_title";
 		$data['page']=$this->Subpage_model->get_admin_page($page_title);
 		$data['subpage']=$this->Subpage_model->get_admin_subpage($page_title,FALSE); 
 		$this->load->view("admin/templates/header");

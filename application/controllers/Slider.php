@@ -5,29 +5,7 @@ class Slider extends CI_Controller
 	{
 		parent::__construct();
 	}
-	public function index($offset = 0)
-	{
 
-		// $data['title']="Slider";
-		// $data['breadcrumb']=breadcrumb();
-		$data['slider']=$this->Slider_model->get_home_slider(FALSE,$config['per_page'],$offset);
-		$data['regulation']=$this->Regulation_model->get_home_regulation(FALSE,3,FALSE);
-		$this->load->view("templates/header");
-		$this->load->view("slider/slider_index",$data);
-		$this->load->view("templates/footer");
-	}
-	public function view($slug){
-		$data['slider'] = $this->Slider_model->get_home_slider($slug);
-		$data['regulation']=$this->Regulation_model->get_home_regulation(FALSE,3,FALSE);
-		if (empty($data['slider'])) {
-			show_404();
-		}
-		$data['title'] = $data['slider']['title'];
-		$data['breadcrumb']=breadcrumb();
-		$this->load->view("templates/header");
-		$this->load->view("slider/slider_view",$data);
-		$this->load->view("templates/footer");	
-	}
 
 	// ADMIN
 	public function admin(){

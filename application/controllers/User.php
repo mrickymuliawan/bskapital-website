@@ -20,6 +20,7 @@ class User extends CI_Controller
 	}
 
 	public function admin(){
+		check_logged_in();
 		$data['title']="User";
 		$data['user']=$this->User_model->get_user(); 
 		$this->load->view("admin/templates/header");
@@ -28,6 +29,7 @@ class User extends CI_Controller
 		$this->load->view("admin/templates/footer");
 	}
 	public function create(){
+		check_logged_in();
 		$data['title']="Create User";
 		$this->form_validation->set_rules('email','email','required|valid_email|callback_check_email_exists');
 		$this->form_validation->set_rules('first_name','first name','required');
@@ -47,6 +49,7 @@ class User extends CI_Controller
 		}
 	}
 	public function edit($user_id){
+		check_logged_in();
 		$data['title']="Edit User";
 		$this->form_validation->set_rules('email','email','required');
 		$this->form_validation->set_rules('first_name','first name','required');
@@ -69,11 +72,13 @@ class User extends CI_Controller
 		}
 	}
 	public function delete($user_id){
+		check_logged_in();
 		$this->User_model->delete_user($user_id);
 		$this->session->set_flashdata('info','Data successfuly deleted');
 		redirect('admin/user/');	
 	}
 	public function changepassword($user_id){
+		check_logged_in();
 		$data['title']="Change Password";
 		$this->form_validation->set_rules('email','email','required');
 		$this->form_validation->set_rules('user_id','user_id','required|callback_check_password');

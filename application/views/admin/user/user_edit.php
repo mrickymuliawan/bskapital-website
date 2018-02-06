@@ -35,8 +35,8 @@
           <select class="form-control" name='role'>
             <option value="administrator" 
             <?php if($user['role']=='administrator') echo "selected"; ?>>Administrator</option>
-            <option value="author" 
-            <?php if($user['role']=='author') echo "selected"; ?>>Author</option>
+            <!-- <option value="author" 
+            <?php if($user['role']=='author') echo "selected"; ?>>Author</option> -->
           </select> 
         </div>
       </div>

@@ -8,31 +8,35 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?= base_url('assets/adminlte/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
+          <img src="<?= base_url('assets/adminlte/dist/img/admin.png') ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p><?php echo $this->session->userdata('first_name'); ?></p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
 
-
+      
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">HEADER</li>
+        <li class="header">MAIN NAVIGATION</li>
         <!-- Optionally, you can add icons to the links -->
-
-        <li><a href="<?= base_url("admin/news") ?>"> <i class="fa fa-newspaper-o"></i> <span>News</span> </a></li>
-        <li><a href="<?= base_url("admin/regulation") ?>"> <i class="fa fa-balance-scale"></i> <span>Regulation</span></a></li>
-        <li><a href="<?= base_url("admin/user") ?>"> <i class="fa fa-user"></i> <span>User</span></a></li>
-        <li><a href="<?= base_url("admin/career") ?>"> <i class="fa fa-user"></i> <span>Career</span></a></li>
-        <li><a href="<?= base_url("admin/user/changepassword/").$this->session->userdata('user_id') ?>"> <i class="fa fa-lock"></i> <span>Change Password</span></a></li>
-
-
-        <li><a href="<?= base_url("admin/slider") ?>"> <i class="fa fa-newspaper-o"></i> <span>Slider</span> </a></li>
+        
+        <li>
+          <a href="<?= base_url("admin/news") ?>" > <i class="fa fa-newspaper-o" style="color: #00c0ef"></i> <span>News</span></a>
+        </li>
+        <li>
+          <a href="<?= base_url("admin/regulation") ?>" > <i class="fa fa-balance-scale" style="color: #3c8dbc"></i> <span>Regulation</span></a>
+        </li>
+        <li>
+         <a href="<?= base_url("admin/career") ?>" > <i class="fa fa-briefcase" style="color: #00a65a"></i> <span>Career</span></a>
+        </li>
+        <li>
+          <a href="<?= base_url("admin/slider") ?>" > <i class="fa fa-clone" style="color: #f39c12"></i> <span>Slider</span> </a>
+        </li>
         <li class="treeview">
-          <a href="#"> <i class="fa fa-file"></i> <span>Page</span>
+          <a href="#"> <i class="fa fa-file" style="color: #605ca8"></i> <span>Page</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -44,8 +48,29 @@
             <li><a href="<?= base_url("admin/subpage/contact") ?>"> <span>Contact Us</span></a></li>
           </ul>
         </li>
+        <li>
+         <a href="<?= base_url("admin/user") ?>"> <i class="fa fa-user-circle-o" style="color: #D81B60"></i> <span>User</span></a>
+        </li>
+        <li>
+         <a href="<?= base_url("admin/user/changepassword/").$this->session->userdata('user_id') ?>"> <i class="fa fa-lock" style="color: #39CCCC"></i> <span>Change Password</span></a>
+        </li>
+
+
+        
+        
       </ul>
       <!-- /.sidebar-menu -->
+      <script>
+        var siteurl = window.location.href;
+        $('.sidebar-menu li').each (function(){
+          var link=$(this).find('a').prop('href');
+          if (siteurl == link) {
+            $(this).addClass('active');
+            $(this).parent('ul').parent('li').addClass('active');
+          }
+        })
+
+      </script>
     </section>
     <!-- /.sidebar -->
   </aside>

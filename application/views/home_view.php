@@ -68,13 +68,13 @@
 	  	<?php foreach ($services as $key => $value): ?>
 	  	<div class="col-md-4">
 	  		<div class="card hover-shadow">
-				  <img class="card-img-top" src="<?=base_url("assets/images/subpage/$value[image_name]") ?>" alt="Card image cap">
+				  <a href="<?=base_url("services/$value[slug]") ?>"> <img class="card-img-top" src="<?=base_url("assets/images/subpage/$value[image_name]") ?>" alt="Card image cap"></a>
 				  <div class="card=block p-2">
 				    <h4 class="card-title"><?= ucwords($value['title']) ?></h4>
 				    <?= strip_tags(word_limiter($value['content'],30)) ?>
 				  </div>
 				  <div class="card-block">
-				    <a href="<?=base_url("services/$value[slug]") ?>"" class="btn btn-info btn-block ">Find Out More</a>
+				    <a href="<?=base_url("services/$value[slug]") ?>" class="btn btn-info btn-block ">Find Out More</a>
 				  </div><!-- /.card-block -->
 				</div>
 	  	</div><!-- /.col-md-4 -->
@@ -93,7 +93,7 @@
 				
 	  		<div class="card hover-shadow">
 	  			<a href="<?= base_url("news/$value[slug]") ?>">
-				 	 <img class="card-img-top" src="<?=base_url("assets/images/news/$value[image_name]") ?>" alt="Card image cap">
+				 	 <img class="card-img-top" src="<?=base_url("assets/images/news/$value[image_name]") ?>" alt="Card image cap" >
 				  </a>	
 				  <div class="card-block p-2">
 				    <h4 class="card-title"><?= ucwords($value['title']) ?></h4>
@@ -141,7 +141,7 @@
 				<p class="text-muted">
 					<?= strip_tags(word_limiter($value['content'],30)) ?>
 				</p>
-				<a href="<?=base_url("career/$value[slug]")?>" class="btn btn-secondary">Read More</a>
+				<a href="<?=base_url("career/$value[slug]")?>" class="btn btn-primary">Read More</a>
 	  	</div>
 	  	
 	  <?php endforeach ?>

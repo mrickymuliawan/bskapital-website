@@ -7,18 +7,17 @@ class Admin extends CI_Controller
 	}
 	public function index()
 	{
-		$path=FCPATH."assets/images/news/";
-		$file="dimaria1.jpg";
-		$file_path=$path.$file;
-		if (file_exists($file_path)) {
-			unlink($file_path);
-			echo "deleted";
+		if ($this->session->userdata('logged_in')) {
+				$info=$this->session->set_flashdata('info','Welcome back');
+				redirect('admin/news');
 		}
-		else{
-			echo "tidak ada";
-		}
+		redirect('admin/login');
 	}
 	public function login(){
+		if ($this->session->userdata('logged_in')) {
+				$info=$this->session->set_flashdata('info','Welcome back');
+				redirect('admin/news');
+		}
 		$this->form_validation->set_rules('email','email','required');
 		$this->form_validation->set_rules('password','password','required');
 		
@@ -32,12 +31,13 @@ class Admin extends CI_Controller
 			if ($result) {
 				$user_data=array(
 					'user_id'=>$result['user_id'],
+					'first_name'=>$result['first_name'],
 					'email'=>$email,
 					'logged_in'=>true
 					);
 				$this->session->set_userdata($user_data);
 				$this->session->set_flashdata('info','login successful');
-				redirect('admin/user');
+				redirect('admin/news');
 			}
 			else{
 				$this->session->set_flashdata('error','invalid email or password');
