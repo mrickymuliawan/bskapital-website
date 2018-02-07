@@ -119,5 +119,5 @@ $route['admin/slider/delete/(:any)']='slider/delete/$1';
 $route['admin/user/changepassword/(:any)']='user/changepassword/$1';
 
 $route['default_controller'] = 'home';
-$route['404_override'] = '';
+$route['404_override'] = 'Page404';
 $route['translate_uri_dashes'] = FALSE;

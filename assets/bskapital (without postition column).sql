@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2018 at 05:54 AM
+-- Generation Time: Feb 07, 2018 at 06:37 AM
 -- Server version: 10.1.8-MariaDB
 -- PHP Version: 5.6.14
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `career` (
   `career_id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `slug` varchar(100) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL
@@ -52,11 +52,11 @@ INSERT INTO `career` (`career_id`, `title`, `slug`, `content`, `created_at`, `us
 
 CREATE TABLE `news` (
   `news_id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `slug` varchar(100) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `image_name` varchar(100) NOT NULL,
+  `image_name` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -75,23 +75,22 @@ INSERT INTO `news` (`news_id`, `title`, `slug`, `content`, `created_at`, `image_
 
 CREATE TABLE `page` (
   `page_id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `slug` varchar(100) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `image_name` varchar(50) NOT NULL,
-  `position` enum('parent','child') NOT NULL
+  `image_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `page`
 --
 
-INSERT INTO `page` (`page_id`, `title`, `slug`, `content`, `created_at`, `image_name`, `position`) VALUES
-(1, 'services', 'services', '', '2018-01-14 21:15:59', '', 'parent'),
-(2, 'about', 'about', '', '2018-01-14 21:16:21', '', 'parent'),
-(3, 'contact', 'contact', '', '2018-01-14 21:16:38', '', 'parent'),
-(4, 'people', 'people', '', '2018-01-14 21:30:42', '', 'parent');
+INSERT INTO `page` (`page_id`, `title`, `slug`, `content`, `created_at`, `image_name`) VALUES
+(1, 'services', 'services', '', '2018-01-14 21:15:59', ''),
+(2, 'about', 'about', '', '2018-01-14 21:16:21', ''),
+(3, 'contact', 'contact', '', '2018-01-14 21:16:38', ''),
+(4, 'people', 'people', '', '2018-01-14 21:30:42', '');
 
 -- --------------------------------------------------------
 
@@ -101,8 +100,8 @@ INSERT INTO `page` (`page_id`, `title`, `slug`, `content`, `created_at`, `image_
 
 CREATE TABLE `regulation` (
   `regulation_id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `slug` varchar(100) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL
@@ -123,10 +122,12 @@ INSERT INTO `regulation` (`regulation_id`, `title`, `slug`, `content`, `created_
 
 CREATE TABLE `slider` (
   `slider_id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `sub_title` varchar(100) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `sub_title` varchar(255) NOT NULL,
   `content` text NOT NULL,
-  `image_name` varchar(100) NOT NULL,
+  `image_name` varchar(255) NOT NULL,
+  `link_text` varchar(255) NOT NULL,
+  `link_url` varchar(500) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -135,10 +136,10 @@ CREATE TABLE `slider` (
 -- Dumping data for table `slider`
 --
 
-INSERT INTO `slider` (`slider_id`, `title`, `sub_title`, `content`, `image_name`, `created_at`, `user_id`) VALUES
-(1, 'Lorem ipsum dorom dummy tex', 'Sub title', 'Lorem ipsum dorom dummy text Lorem ipsum dorom dummy text', 'QghKc.jpg', '2018-02-05 18:56:14', 1),
-(2, 'Consulting ', 'Sub title', 'Lorem ipsum dorom dummy text Lorem ipsum dorom dummy text Lorem ipsum dorom dummy text', 'tmp759072642547318786.jpg', '2018-02-05 18:59:46', 1),
-(3, 'Lorem ipsum dorom dummy text', 'This is dummy text', 'Lorem ipsum dorom dummy text Lorem ipsum dorom dummy text Lorem ipsum dorom dummy text Lorem ipsum d', '0SmocJJ.jpg', '2018-02-05 19:02:41', 1);
+INSERT INTO `slider` (`slider_id`, `title`, `sub_title`, `content`, `image_name`, `link_text`, `link_url`, `created_at`, `user_id`) VALUES
+(1, 'Lorem ipsum dorom dummy tex', 'Sub title', 'Lorem ipsum dorom dummy text Lorem ipsum dorom dummy text Lorem ipsum dorom dummy text Lorem ipsum d', 'QghKc.jpg', 'See More', 'http://localhost/bskapital/services', '2018-02-07 12:33:58', 1),
+(2, 'Consulting ', 'Sub title', 'Lorem ipsum dorom dummy text Lorem ipsum dorom dummy text Lorem ipsum dorom dummy text', 'tmp759072642547318786.jpg', 'See More', 'http://localhost/bskapital/services', '2018-02-07 12:33:57', 1),
+(3, 'Lorem ipsum dorom dummy tex', 'We try our best', 'Lorem ipsum dorom dummy text Lorem ipsum dorom dummy text Lorem ipsum dorom dummy text', '0SmocJJ.jpg', 'See More', 'http://localhost/bskapital/services', '2018-02-07 12:34:17', 1);
 
 -- --------------------------------------------------------
 
@@ -148,11 +149,11 @@ INSERT INTO `slider` (`slider_id`, `title`, `sub_title`, `content`, `image_name`
 
 CREATE TABLE `sub_page` (
   `sub_page_id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `slug` varchar(100) NOT NULL,
-  `sub_title` varchar(100) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `sub_title` varchar(255) NOT NULL,
   `content` text NOT NULL,
-  `image_name` varchar(100) NOT NULL,
+  `image_name` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `page_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -180,7 +181,7 @@ CREATE TABLE `user` (
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `role` enum('administrator','author') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -189,7 +190,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `password`, `role`) VALUES
-(1, 'Administrator', 'Web', 'admin@mgi-gar.com', '8022201e37684c6b1dd052e2fff1c0b9', 'administrator');
+(1, 'Administrator', 'Web', 'admin@mgi-gar.com', '8022201e37684c6b1dd052e2fff1c0b9', 'administrator'),
+(2, 'ricky', 'muliawan', 'mrickymuliawan@gmail.com', 'c0306d93a3f5045b94c02387c5109435', 'administrator');
 
 --
 -- Indexes for dumped tables
@@ -275,7 +277,7 @@ ALTER TABLE `sub_page`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

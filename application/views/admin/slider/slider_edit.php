@@ -13,17 +13,17 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="control-label">Title</label>
-
+        <label class="control-label">Title</label><br />
+        <small>Max 50 characters</small>
         <div class="">
-          <input type="text" class="form-control" placeholder="title" name="title" value="<?= $slider['title'] ?>">
+          <input type="text" class="form-control" placeholder="title" maxlength="50" name="title" value="<?= $slider['title'] ?>">
         </div>
       </div>
       <div class="form-group">
-        <label class="control-label">Sub Title</label>
-
+        <label class="control-label">Sub Title</label><br />
+        <small>Max 50 characters</small>
         <div class="">
-          <input type="text" class="form-control" placeholder="sub title" name="sub_title" value="<?= $slider['sub_title'] ?>">
+          <input type="text" class="form-control" placeholder="sub title" maxlength="50" name="sub_title" value="<?= $slider['sub_title'] ?>">
         </div>
       </div>
       <div class="form-group">
@@ -36,9 +36,22 @@
       </div>
       <div class="form-group">
         <label class="control-label">Content</label><br />
-        <small>Max 100 letters</small>
+        <small>Max 100 characters</small>
         <div class="">
           <textarea name="content" rows="2" class="form-control" maxlength="100"><?= $slider['content'] ?></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Link Text</label><br />
+        <small>Max 20 characters</small>
+        <div class="">
+          <input type="text" class="form-control" placeholder="link text" maxlength="20" name="link_text" value="<?= $slider['link_text'] ?>">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Link URL </label><br />
+        <div class="">
+          <input type="text" class="form-control" placeholder="url" name="link_url" value="<?= $slider['link_url'] ?>">
         </div>
       </div>
     </div>

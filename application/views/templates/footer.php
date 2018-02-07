@@ -3,15 +3,18 @@
     <div class="row">
     	<div class="col-md-6">
     		<ul class="list-inline">
-    			<li class="list-inline-item"><a href="">About Us</a></li>
-    			<li class="list-inline-item"><a href="">News</a></li>
-    			<li class="list-inline-item"><a href="">Regulations</a></li>
-    			<li class="list-inline-item"><a href="">Career</a></li>
+                <li class="list-inline-item"><a href="<?=base_url('services')?>">Services</a></li>
+    			<li class="list-inline-item"><a href="<?=base_url('about')?>">About Us</a></li>
+    			<li class="list-inline-item"><a href="<?=base_url('news')?>">News</a></li>
+    			<li class="list-inline-item"><a href="<?=base_url('regulation')?>">Regulations</a></li>
+    			<li class="list-inline-item"><a href="<?=base_url('news')?>">News</a></li>
+                <li class="list-inline-item"><a href="<?=base_url('career')?>">Career</a></li>
+                <li class="list-inline-item"><a href="<?=base_url('contact')?>">Contact Us</a></li>
     		</ul>
     		
     	</div><!-- /.col-md-6 -->
     	<div class="col-md-6">
-				<p class="text-muted float-right">© Bskapital. All Rights Reserved.</p>
+				<p class="text-muted float-right">Copyright © 2018 Bskapital. All Rights Reserved.</p>
     	</div><!-- /.col-md-6 -->
     </div><!-- /.row -->
   </div>

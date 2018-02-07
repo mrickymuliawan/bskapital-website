@@ -3,9 +3,12 @@ body{
 	font-family: 'raleway';
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 300px) and (max-width: 800px)   {
    .carousel-column{
 			height: 350px; 
+		}
+		.carousel-column img{
+			height: 100%; 
 		}
 }
 @media screen and (min-width: 1000px) {

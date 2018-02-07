@@ -18,7 +18,7 @@ class User_model extends CI_Model
 	public function create_user($enc_password)
 	{
 		$data=array(
-			'email'=>$this->input->post('email'),
+			'email'=>strtolower($this->input->post('email')),
 			'first_name'=>$this->input->post('first_name'),
 			'last_name'=>$this->input->post('last_name'),
 			'role'=>$this->input->post('role'),

@@ -48,6 +48,8 @@ class Slider_model extends CI_Model
 			'title'=>$this->input->post('title'),
 			'sub_title'=>$this->input->post('sub_title'),
 			'content'=>$this->input->post('content'),
+			'link_text'=>$this->input->post('link_text'),
+			'link_url'=>$this->input->post('link_url'),
 			'image_name'=>$image_name
 			);
 		$this->db->where('slider_id',$slider_id);

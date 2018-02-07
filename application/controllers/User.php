@@ -42,7 +42,7 @@ class User extends CI_Controller
 			$this->load->view("admin/templates/footer");	
 		}
 		else{
-			$enc_password =md5($this->input->post('email'));
+			$enc_password =md5(strtolower($this->input->post('email')));
 			$this->User_model->create_user($enc_password);
 			$this->session->set_flashdata('info','Data successfuly created');
 			redirect('admin/user/');

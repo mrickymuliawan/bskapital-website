@@ -19,11 +19,11 @@
 
     <div class="container py-2">
       <div class="row">
-        <div class="col-sm-10">
-          <a class="mr-3 text-primary" href="<?= base_url('') ?>"> <span class="fa fa-envelope"></span> admin@bskapital.co.id</a>
-          <a class="mr-3 text-primary" href="<?= base_url('') ?>"> <span class="fa fa-map-marker"></span>Jl. 123 no 888 Jakarta</a>
-        </div><!-- /.col-sm-6 -->
-        <div class="col-sm-2 ">
+        <div class="col-md-8">
+          <a class="text-primary" href="<?= base_url('') ?>"> <span class="fa fa-envelope"></span> admin@bskapital.co.id</a>
+        </div><!-- /.col-md-3 -->
+        <!-- /.col-md-7 -->
+        <div class="offset-md-1 col-md-3 text-md-right">
           <a class="mr-3 text-primary" href="<?= base_url('') ?>"> <span class="fa fa-facebook"></span></a>
         
         
@@ -32,7 +32,7 @@
        
           <a class="mr-3 text-primary" href=http://timesheet.bskapital.co.id> <span class="fa fa-calendar"></span></a>
        
-        </div><!-- /.col-sm6 -->
+        </div><!-- /.col-sm-2 -->
       </div><!-- /.row -->
           
     </div>

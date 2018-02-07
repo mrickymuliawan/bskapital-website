@@ -20,7 +20,10 @@
 						    <h3><?=$value['title']?></h3>
 						    <h5><?=$value['sub_title']?></h5>
 						    <p><?=$value['content']?></p>
-						    <button class="btn btn-primary">See More</button>
+						    <?php if ($value['link_url'] != ''): ?>
+						    	<a href="<?=$value['link_url']?>" class="btn btn-primary"><?=$value['link_text']?></a>
+						    <?php endif ?>
+						    
 						  </div>
             </div><!-- /.col-md-8 -->
           </div><!-- /.row -->

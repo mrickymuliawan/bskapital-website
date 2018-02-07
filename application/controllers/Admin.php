@@ -7,11 +7,7 @@ class Admin extends CI_Controller
 	}
 	public function index()
 	{
-		if ($this->session->userdata('logged_in')) {
-				$info=$this->session->set_flashdata('info','Welcome back');
-				redirect('admin/news');
-		}
-		redirect('admin/login');
+		show_404();
 	}
 	public function login(){
 		if ($this->session->userdata('logged_in')) {
